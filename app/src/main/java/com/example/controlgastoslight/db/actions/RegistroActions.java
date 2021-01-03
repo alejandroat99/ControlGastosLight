@@ -39,8 +39,23 @@ public class RegistroActions {
         }
     }
 
-    public LiveData<Registro> getRegistro(int id){
-        return db.registroDao().getRegistro(id);
+    public Registro getRegistro(int id) throws ExecutionException, InterruptedException {
+        return new getAsyncTask(db,id).execute().get();
+    }
+
+    private class getAsyncTask extends AsyncTask<Void,Void,Registro>{
+        private DataBase db;
+        private int id;
+
+        getAsyncTask(DataBase dao, int id){
+            db = dao;
+            this.id = id;
+        }
+
+        @Override
+        protected Registro doInBackground(Void... voids) {
+            return db.registroDao().getRegistro(id);
+        }
     }
 
     public void insertTask(double value, boolean gasto, String titulo, String descripcion, String fecha){
@@ -74,10 +89,10 @@ public class RegistroActions {
         }
     }
 
-    public void delete(final int id){
-        final LiveData<Registro> registro = getRegistro(id);
+    public void delete(final int id) throws ExecutionException, InterruptedException {
+        final Registro registro = getRegistro(id);
         if(registro != null){
-            new deleteAsyncTask(db, registro.getValue());
+            new deleteAsyncTask(db, registro);
         }
     }
 
@@ -97,8 +112,8 @@ public class RegistroActions {
         }
     }
 
-    public void update(final Registro registro){
-        final LiveData<Registro> r = getRegistro(registro.getRegistroId());
+    public void update(final Registro registro) throws ExecutionException, InterruptedException {
+        final Registro r = getRegistro(registro.getRegistroId());
         if(r != null){
             new updateAsyncTask(db, registro).execute();
         }

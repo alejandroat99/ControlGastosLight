@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.controlgastoslight.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/gruposFragment"
         android:name="com.example.controlgastoslight.GruposFragment"
-        android:label="fragment_grupos"
+        android:label="Grupos"
         tools:layout="@layout/fragment_grupos" />
     <fragment
         android:id="@+id/estadisticasFragment"
         android:name="com.example.controlgastoslight.EstadisticasFragment"
-        android:label="fragment_estadisticas"
+        android:label="Estadisticas"
         tools:layout="@layout/fragment_estadisticas" />
 </navigation>

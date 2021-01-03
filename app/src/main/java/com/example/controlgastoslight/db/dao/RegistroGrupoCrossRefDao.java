@@ -22,10 +22,10 @@ public interface RegistroGrupoCrossRefDao {
     void delete(RegistroGrupoCrossRef rel);
 
     @Query("SELECT * FROM RegistroGrupoCrossRef WHERE registroId=:registroId AND grupoId=:grupoId")
-    LiveData<RegistroGrupoCrossRef> getRelacion(int registroId, int grupoId);
+    RegistroGrupoCrossRef getRelacion(int registroId, int grupoId);
 
     @Query("SELECT * FROM RegistroGrupoCrossRef WHERE grupoId=:grupoId")
-    List<RegistroGrupoCrossRef> getRelacion(int grupoId);
+    List<RegistroGrupoCrossRef> getRelacionByGrupo(int grupoId);
 
     @Query("SELECT * FROM RegistroGrupoCrossRef WHERE registroId=:registroId")
     List<RegistroGrupoCrossRef> getRelacionByRegistro(int registroId);

@@ -25,8 +25,8 @@ public interface RegistroDao {
     // @Query("SELECT * FROM registro WHERE gasto = 0")
     // List<Registro> getIngresos();
 
-    @Query("SELECT * FROM registro WHERE registroId=:id")
-    LiveData<Registro> getRegistro(int id);
+    @Query("SELECT * FROM registro WHERE registroId=:id LIMIT 1")
+    Registro getRegistro(int id);
 
     @Transaction
     @Query("SELECT * FROM registro")

@@ -2,15 +2,11 @@ package com.example.controlgastoslight.db.actions;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
-import androidx.lifecycle.LiveData;
 import androidx.room.Room;
-
-
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
-
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class RegistroGrupoCrossRefActions {
     private String DB_NAME = "ControlGastos";
@@ -48,19 +44,58 @@ public class RegistroGrupoCrossRefActions {
         }
     }
 
-    public LiveData<RegistroGrupoCrossRef> getRelacion(int registroId, int grupoId){
-        return db.registroGrupoCrossRefDao().getRelacion(registroId, grupoId);
+    public RegistroGrupoCrossRef getRelacion(int registroId, int grupoId) throws ExecutionException, InterruptedException {
+        return new getAsyncTask(db,registroId,grupoId).execute().get();
     }
 
-    public void delete(int registroId, int grupoId){
-        LiveData<RegistroGrupoCrossRef> rel = getRelacion(registroId, grupoId);
+    private class getAsyncTask extends AsyncTask<Void,Void,RegistroGrupoCrossRef>{
+        private final DataBase db;
+        private final int registroId;
+        private final int grupoId;
+
+        getAsyncTask(DataBase db, int registroId, int grupoId){
+            this.db=db;
+            this.registroId=registroId;
+            this.grupoId=grupoId;
+        }
+
+        @Override
+        protected RegistroGrupoCrossRef doInBackground(Void... voids) {
+            return db.registroGrupoCrossRefDao().getRelacion(registroId,grupoId);
+        }
+    }
+
+    public void delete(int registroId, int grupoId) throws ExecutionException, InterruptedException {
+        RegistroGrupoCrossRef rel = getRelacion(registroId, grupoId);
         if(rel != null){
-            new deleteAsyncTask(db, rel.getValue()).execute();
+            new deleteAsyncTask(db, rel).execute();
         }
     }
 
     public List<RegistroGrupoCrossRef> getRelacionByGrupo(int grupoId){
-        return db.registroGrupoCrossRefDao().getRelacion(grupoId);
+        try {
+            return new getByGrupoAsyncTask(db,grupoId).execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private class getByGrupoAsyncTask extends AsyncTask<Void,Void,List<RegistroGrupoCrossRef>>{
+        private DataBase db;
+        private int grupoId;
+
+        getByGrupoAsyncTask(DataBase db, int id){
+            this.db = db;
+            this.grupoId = id;
+        }
+
+        @Override
+        protected List<RegistroGrupoCrossRef> doInBackground(Void... voids) {
+            return db.registroGrupoCrossRefDao().getRelacionByGrupo(grupoId);
+        }
     }
 
 
@@ -81,7 +116,29 @@ public class RegistroGrupoCrossRefActions {
     }
 
     public List<RegistroGrupoCrossRef> getRelacionByRegistro(int registroId){
-        return db.registroGrupoCrossRefDao().getRelacionByRegistro(registroId);
+        try {
+            return new getByRegistroAsyncTask(db,registroId).execute().get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private class getByRegistroAsyncTask extends AsyncTask<Void, Void, List<RegistroGrupoCrossRef>>{
+        private DataBase db;
+        private int registroId;
+
+        getByRegistroAsyncTask(DataBase db, int id){
+            this.db = db;
+            this.registroId = id;
+        }
+
+        @Override
+        protected List<RegistroGrupoCrossRef> doInBackground(Void... voids) {
+            return db.registroGrupoCrossRefDao().getRelacionByRegistro(registroId);
+        }
     }
 
 }

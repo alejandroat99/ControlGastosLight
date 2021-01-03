@@ -18,8 +18,8 @@ public interface GrupoDao {
     @Query("SELECT * FROM grupo")
     List<Grupo> getGrupos();
 
-    @Query("SELECT * FROM grupo WHERE grupoId=:id")
-    LiveData<Grupo> getGrupo(int id);
+    @Query("SELECT * FROM grupo WHERE grupoId=:id LIMIT 1")
+    Grupo getGrupo(int id);
 
     @Insert
     void addGrupo(Grupo g);

@@ -2,11 +2,19 @@ package com.example.controlgastoslight;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.controlgastoslight.adapter.EstadisticasPageAdapter;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +68,53 @@ public class EstadisticasFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_estadisticas, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ViewPager pager = view.findViewById(R.id.pager_estadisticas);
+        TabLayout tabBar = view.findViewById(R.id.tabBar_estadisticas);
+        TabItem tabToday = view.findViewById(R.id.tabToday);
+        TabItem tabWeek = view.findViewById(R.id.tabWeek);
+        TabItem tabMonth = view.findViewById(R.id.tabMonth);
+        TabItem tabYear = view.findViewById(R.id.tabYear);
+
+        EstadisticasPageAdapter adapter = new EstadisticasPageAdapter(
+                getChildFragmentManager(), tabBar.getTabCount());
+        pager.setAdapter(adapter);
+
+        tabBar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                tabBar.setScrollPosition(position, positionOffset, true);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
