@@ -18,4 +18,6 @@
         <item>Ingreso</item>
         <item>Gasto</item>
     </string-array>
+    <string name="group">Grupo</string>
+    <string name="hint_description">Escribe una breve descripción</string>
 </resources>
