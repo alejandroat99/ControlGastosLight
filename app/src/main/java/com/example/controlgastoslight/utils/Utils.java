@@ -5,8 +5,11 @@ import android.content.Context;
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.model.Registro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +135,41 @@ public class Utils {
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<Registro> getRegistrosWeek(Context context){
+        RegistroActions ra = new RegistroActions(context);
+        try {
+            List<Registro> allRegistros = ra.getAllRegistro();
+            Map<String, List<Registro>> filter_date = groupByDate(allRegistros);
+
+            Calendar calendar = Calendar.getInstance();
+            int week = calendar.get(Calendar.WEEK_OF_YEAR);
+            int year = calendar.get(Calendar.YEAR);
+            List<String> dates = new ArrayList<>();
+            for(String date : filter_date.keySet()){
+                Date aux_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                Calendar aux_calendar = Calendar.getInstance();
+                aux_calendar.setTime(aux_date);
+                if( week == aux_calendar.get(Calendar.WEEK_OF_YEAR) && date.contains("/"+year)){
+                    dates.add(date);
+                }
+            }
+
+            List<Registro> res = new ArrayList<>();
+            for (String week_date : dates){
+                res.addAll(filter_date.get(week_date));
+            }
+
+            return res;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;

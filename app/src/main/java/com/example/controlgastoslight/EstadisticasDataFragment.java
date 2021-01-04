@@ -9,7 +9,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.controlgastoslight.db.actions.RegistroActions;
+import com.example.controlgastoslight.db.model.Registro;
+import com.example.controlgastoslight.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,17 +68,32 @@ public class EstadisticasDataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         TextView text_test = (TextView) view.findViewById(R.id.text_test);
+        List<Registro> registros = null;
         switch (this.mode){
             case 0: text_test.setText("Modo TODAY");
+                    registros = Utils.getRegistrosToday(view.getContext());
                     break;
             case 1: text_test.setText("Modo WEEK");
+                    registros = Utils.getRegistrosWeek(view.getContext());
                     break;
             case 2: text_test.setText("Modo MONTH");
+                    registros = Utils.getRegistrosMonth(view.getContext());
                     break;
             case 3: text_test.setText("Modo YEAR");
+                    registros = Utils.getRegistrosYear(view.getContext());
                     break;
             default: text_test.setText("ERROR");
                     break;
+        }
+
+        if(registros != null) {
+            ListView list = (ListView) view.findViewById(R.id.list_registros);
+            List<String> list_data = new ArrayList<>();
+            for (Registro r : registros) {
+                list_data.add(r.toString());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, list_data);
+            list.setAdapter(adapter);
         }
     }
 }
