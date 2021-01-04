@@ -88,4 +88,16 @@ public class Registro {
     public int hashCode() {
         return Objects.hash(registroId);
     }
+
+    @Override
+    public String toString() {
+        return "Registro{" +
+                "registroId=" + registroId +
+                ", value=" + value +
+                ", gasto=" + gasto +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fecha='" + fecha + '\'' +
+                '}';
+    }
 }

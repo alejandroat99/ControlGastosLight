@@ -1,11 +1,16 @@
 package com.example.controlgastoslight.utils;
 
+import android.content.Context;
+
+import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.model.Registro;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class Utils {
     /**
@@ -56,5 +61,87 @@ public class Utils {
             res += r.getValue();
         }
         return res;
+    }
+
+    public static List<Registro> getRegistrosToday(Context context){
+        RegistroActions ra = new RegistroActions(context);
+        try {
+            List<Registro> allRegistros = ra.getAllRegistro();
+            Map<String, List<Registro>> filter_date = groupByDate(allRegistros);
+            String today = getDate();
+            return filter_date.get(today);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<Registro> getRegistrosMonth(Context context){
+        RegistroActions ra = new RegistroActions(context);
+        try {
+            List<Registro> allRegistros = ra.getAllRegistro();
+            Map<String, List<Registro>> filter_date = groupByDate(allRegistros);
+
+            Calendar calendar = Calendar.getInstance();
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int year = calendar.get(Calendar.YEAR);
+            List<String> dates = new ArrayList<>();
+            for(String date : filter_date.keySet()){
+                if(date.contains(month+"/"+year)){
+                    dates.add(date);
+                }
+            }
+
+            List<Registro> res = new ArrayList<>();
+            for (String month_date : dates){
+                res.addAll(filter_date.get(month_date));
+            }
+
+            return res;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<Registro> getRegistrosYear(Context context){
+        RegistroActions ra = new RegistroActions(context);
+        try {
+            List<Registro> allRegistros = ra.getAllRegistro();
+            Map<String, List<Registro>> filter_date = groupByDate(allRegistros);
+
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            List<String> dates = new ArrayList<>();
+            for(String date : filter_date.keySet()){
+                if(date.contains("/"+year)){
+                    dates.add(date);
+                }
+            }
+
+            List<Registro> res = new ArrayList<>();
+            for (String year_date : dates){
+                res.addAll(filter_date.get(year_date));
+            }
+
+            return res;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getDate(){
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        return String.format("%d/%d/%d", day, month, year);
     }
 }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.model.Registro;
+import com.example.controlgastoslight.utils.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -60,7 +61,8 @@ public class NewEntryActivity extends AppCompatActivity {
         registry.setDescripcion(description);
         registry.setGasto(movType);
         registry.setValue(quantity);
-        registry.setFecha(Calendar.getInstance().getTime().toString());
+        //registry.setFecha(Calendar.getInstance().getTime().toString());
+        registry.setFecha(Utils.getDate());
         rA.insert(registry);
         finish();
     }
