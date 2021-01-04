@@ -23,25 +23,25 @@
                 android:id="@+id/tabToday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Today" />
+                android:text="@string/barra_hoy" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabWeek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Week" />
+                android:text="@string/barra_semana" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Month" />
+                android:text="@string/barra_mes" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Year" />
+                android:text="@string/barra_año" />
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager

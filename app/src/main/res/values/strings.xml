@@ -2,4 +2,20 @@
     <string name="app_name">ControlGastosLight</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="barra_mes">Month</string>
+    <string name="barra_año">Year</string>
+    <string name="barra_semana">Week</string>
+    <string name="barra_hoy">Today</string>
+    <string name="nueva_entrada">New Entry</string>
+    <string name="texto_tipoMov">Movement type</string>
+    <string name="texto_cantidad">Quantity</string>
+    <string name="title">Title</string>
+    <string name="enter_title">Enter the title here</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+
+    <string-array name="movementTypes">
+        <item>Entry</item>
+        <item>Expense</item>
+    </string-array>
 </resources>
