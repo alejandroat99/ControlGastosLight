@@ -12,9 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +40,7 @@ public class HomeFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager viewPager;
     TabItem tabToday, tabWeek, tabMonth, tabYear;
-    Button btnNewEntry;
+    ImageButton btnNewEntry;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -87,5 +92,15 @@ public class HomeFragment extends Fragment {
 
         // Configuring "New Entry" button
         btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
+        TextView text_test_registros = (TextView) view.findViewById(R.id.text_test_registros);
+        RegistroActions ra = new RegistroActions(view.getContext());
+        try {
+            int size = ra.getAllRegistro().size();
+            text_test_registros.setText("Registros: " + size);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

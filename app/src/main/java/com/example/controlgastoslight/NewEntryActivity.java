@@ -62,5 +62,6 @@ public class NewEntryActivity extends AppCompatActivity {
         registry.setValue(quantity);
         registry.setFecha(Calendar.getInstance().getTime().toString());
         rA.insert(registry);
+        finish();
     }
 }

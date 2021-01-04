@@ -61,7 +61,7 @@ public class GrupoListAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle(R.string.app_name);
-                builder.setMessage("Do you want to delete this group?");
+                builder.setMessage("Do you want to delete \""+ getItem(position).getLabel() +"\" group?");
                 builder.setIcon(R.drawable.ic_delete);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

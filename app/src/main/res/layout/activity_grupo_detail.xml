@@ -6,32 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".GrupoDetailActivity">
 
-    <TextView
-        android:id="@+id/text_group_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Grupo Details"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="674dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_group_label"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_group_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="30dp"
+                android:paddingTop="10dp"
+                android:text="Grupo Details"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/group_barchart_totals"
+                android:layout_width="match_parent"
+                android:layout_height="364dp" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/group_piechart_porcentajes"
+                android:layout_width="match_parent"
+                android:layout_height="364dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/group_month_record"
+                android:layout_width="match_parent"
+                android:layout_height="364dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/group_linechart_all"
+                android:layout_width="match_parent"
+                android:layout_height="364dp" />
+
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

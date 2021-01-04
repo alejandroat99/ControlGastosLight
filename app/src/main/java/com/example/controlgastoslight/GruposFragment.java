@@ -89,6 +89,7 @@ public class GruposFragment extends Fragment {
                     ga.insert(g);
                     refresh(view);
                     new_group.setText("");
+                    new_group.clearFocus();
                 }
             }
         });
