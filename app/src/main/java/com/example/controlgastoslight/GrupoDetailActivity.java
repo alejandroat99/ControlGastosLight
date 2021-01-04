@@ -16,6 +16,7 @@ import com.example.controlgastoslight.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -25,6 +26,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -88,7 +90,9 @@ public class GrupoDetailActivity extends AppCompatActivity {
         List<Entry> entries_ingresos = new ArrayList<>();
 
         int index = 0;
+        String[] x_labels = new String[fechas.keySet().size()];
         for(String key : fechas.keySet()){
+            x_labels[index] = key;
             Map<Boolean, List<Registro>> registros_date_type = Utils.groupByType(fechas.get(key));
             float gastos_day_total = Utils.sum(registros_date_type.get(true));
             float ingresos_day_total = Utils.sum(registros_date_type.get(false));
@@ -97,17 +101,21 @@ public class GrupoDetailActivity extends AppCompatActivity {
             index++;
         }
         LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, "");
-        dataSet_gastos.setColor(R.color.gasto);
-        dataSet_gastos.setCircleColor(R.color.gasto);
+        dataSet_gastos.setColor(getColor(R.color.gasto));
+        dataSet_gastos.setCircleColor(getColor(R.color.gasto));
         LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, "");
-        dataSet_ingresos.setColor(R.color.ingreso);
-        dataSet_ingresos.setCircleColor(R.color.ingreso);
+        dataSet_ingresos.setColor(getColor(R.color.ingreso));
+        dataSet_ingresos.setCircleColor(getColor(R.color.ingreso));
 
         LineData data = new LineData();
         data.addDataSet(dataSet_gastos);
         data.addDataSet(dataSet_ingresos);
 
         chart.setData(data);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
+        chart.invalidate();
     }
 
     private void load_linechart_all() {
@@ -118,7 +126,9 @@ public class GrupoDetailActivity extends AppCompatActivity {
         List<Entry> entries_ingresos = new ArrayList<>();
 
         int index = 0;
+        String[] x_labels = new String[fechas.keySet().size()];
         for(String key : fechas.keySet()){
+            x_labels[index] = key;
             Map<Boolean, List<Registro>> registros_date_type = Utils.groupByType(fechas.get(key));
             float gastos_day_total = Utils.sum(registros_date_type.get(true));
             float ingresos_day_total = Utils.sum(registros_date_type.get(false));
@@ -138,24 +148,30 @@ public class GrupoDetailActivity extends AppCompatActivity {
         data.addDataSet(dataSet_ingresos);
 
         chart.setData(data);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
+        chart.invalidate();
     }
 
     private void load_piechart_porcentajes() {
         PieChart chart = (PieChart) findViewById(R.id.group_piechart_porcentajes);
+        if(registros.size() > 0) {
+            Map<Boolean, List<Registro>> tipos = Utils.groupByType(registros);
+            float total = registros.size();
+            float gastos = tipos.get(true).size() / total;
+            float ingresos = tipos.get(false).size() / total;
 
-        Map<Boolean, List<Registro>> tipos = Utils.groupByType(registros);
-        float total = registros.size();
-        float gastos = tipos.get(true).size() / total;
-        float ingresos = tipos.get(false).size() / total;
+            List<PieEntry> entries = new ArrayList<>();
+            entries.add(new PieEntry(gastos, R.string.spend));
+            entries.add(new PieEntry(ingresos, R.string.income));
 
-        List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(gastos, R.string.spend));
-        entries.add(new PieEntry(ingresos, R.string.income));
-
-        PieDataSet dataSet = new PieDataSet(entries, " ");
-        dataSet.setColors(R.color.gasto, R.color.ingreso);
-        PieData data = new PieData(dataSet);
-        chart.setData(data);
+            PieDataSet dataSet = new PieDataSet(entries, " ");
+            dataSet.setColors(R.color.gasto, R.color.ingreso);
+            PieData data = new PieData(dataSet);
+            chart.setData(data);
+        }
+        chart.invalidate();
     }
 
     private void load_barchar_totals() {
@@ -173,6 +189,11 @@ public class GrupoDetailActivity extends AppCompatActivity {
         dataSet.setColors(R.color.gasto, R.color.ingreso);
         BarData data = new BarData(dataSet);
         chart.setData(data);
+
+        String[] x_labels = {getString(R.string.spend), getString(R.string.income)};
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
     }
 
     private void load_registros() {
