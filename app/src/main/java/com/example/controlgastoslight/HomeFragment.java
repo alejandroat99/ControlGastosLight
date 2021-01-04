@@ -1,12 +1,20 @@
 package com.example.controlgastoslight;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +22,6 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -23,6 +30,12 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    // Starts here
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    TabItem tabToday, tabWeek, tabMonth, tabYear;
+    Button btnNewEntry;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -60,5 +73,19 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        tabLayout = view.findViewById(R.id.tabLayout);
+        viewPager = view.findViewById(R.id.viewPager);
+        tabToday = view.findViewById(R.id.tabToday);
+        tabWeek = view.findViewById(R.id.tabWeek);
+        tabMonth = view.findViewById(R.id.tabMonth);
+        tabYear = view.findViewById(R.id.tabYear);
+        btnNewEntry = view.findViewById(R.id.btNewEntry);
+
+        // Configuring "New Entry" button
+        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
     }
 }
