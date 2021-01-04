@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gasto">#F34E4E</color>
     <color name="ingreso">#72DF4B</color>
+    <color name="balance">#DF904B</color>
 </resources>

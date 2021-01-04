@@ -15,4 +15,5 @@
     <string name="save">Guardad</string>
     <string name="spend">Gasto</string>
     <string name="income">Ingreso</string>
+    <string name="balance">Balance</string>
 </resources>

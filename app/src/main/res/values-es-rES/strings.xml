@@ -20,4 +20,5 @@
     </string-array>
     <string name="income">Ingreso</string>
     <string name="spend">Gasto</string>
+    <string name="balance">Balance</string>
 </resources>
