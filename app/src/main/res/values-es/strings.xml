@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ControlGastosLight</string>
-    <string name="hello_blank_fragment">Hola</string>
-    <string name="barra_hoy">Hoy</string>
+    <string name="app_name">Control Gastos</string>
+    <string name="hello_blank_fragment">Hola Fragmento Vacío</string>
     <string name="barra_mes">Mes</string>
     <string name="barra_año">Año</string>
     <string name="barra_semana">Semana</string>
+    <string name="barra_hoy">Hoy</string>
     <string name="nueva_entrada">Nueva entrada</string>
     <string name="texto_tipoMov">Tipo de movimiento</string>
     <string name="texto_cantidad">Cantidad</string>
     <string name="title">Título</string>
     <string name="enter_title">Escribe aquí el título</string>
     <string name="description">Descripción</string>
-    <string name="save">Guardar</string>
-
-    <string-array name="movementTypes">
-        <item>Ingreso</item>
-        <item>Gasto</item>
-    </string-array>
-    <string name="group">Grupo</string>
-    <string name="hint_description">Escribe una breve descripción</string>
-    <string name="income">Ingreso</string>
+    <string name="save">Guardad</string>
     <string name="spend">Gasto</string>
+    <string name="income">Ingreso</string>
     <string name="balance">Balance</string>
 </resources>
