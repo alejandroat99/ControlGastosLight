@@ -22,6 +22,8 @@ import com.example.controlgastoslight.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -31,6 +33,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -140,7 +143,14 @@ public class EstadisticasDataFragment extends Fragment {
             BarData barData = new BarData(barDataSet);
             barchart.setData(barData);
             barchart.setMinimumHeight(646);
+
+            XAxis xAxis = barchart.getXAxis();
+            xAxis.setGranularity(1f);
+            String[] x_labels = {getString(R.string.spend), getString(R.string.income)};
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
             linear_layout.addView(barchart);
+
+            barchart.invalidate();
         }else{
             LineChart lineChart = new LineChart(linear_layout.getContext());
             Map<String, List<Registro>> fechas = Utils.groupByDate(registros);
@@ -148,7 +158,9 @@ public class EstadisticasDataFragment extends Fragment {
             List<Entry> entries_gasto = new ArrayList<>();
             List<Entry> entries_ingreso = new ArrayList<>();
             int index = 0;
+            String[] x_labels = new String[fechas.keySet().size()];
             for(String key : fechas.keySet()){
+                x_labels[index] = key;
                 Map<Boolean, List<Registro>> registros_day = Utils.groupByType(fechas.get(key));
                 float gastos = Utils.sum(registros_day.get(true));
                 float ingresos = Utils.sum(registros_day.get(false));
@@ -171,7 +183,16 @@ public class EstadisticasDataFragment extends Fragment {
 
             lineChart.setData(lineData);
             lineChart.setMinimumHeight(646);
+
+            XAxis xAxis = lineChart.getXAxis();
+            xAxis.setGranularity(1f);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
+
+            YAxis rightYAxis = lineChart.getAxisRight();
+            rightYAxis.setEnabled(false);
             linear_layout.addView(lineChart);
+
+            lineChart.invalidate();
         }
     }
 
@@ -204,6 +225,8 @@ public class EstadisticasDataFragment extends Fragment {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelColor(ContextCompat.getColor(linear_layout.getContext(), R.color.black));
         linear_layout.addView(pieChart);
+
+        pieChart.invalidate();
     }
 
     /**
@@ -218,7 +241,9 @@ public class EstadisticasDataFragment extends Fragment {
 
             List<Entry> entries = new ArrayList<>();
             int index = 0;
+            String[] x_labels = new String[fechas.keySet().size()];
             for(String key : fechas.keySet()){
+                x_labels[index] = key;
                 Map<Boolean, List<Registro>> registros_day = Utils.groupByType(fechas.get(key));
                 float gastos = Utils.sum(registros_day.get(true));
                 float ingresos = Utils.sum(registros_day.get(false));
@@ -230,12 +255,22 @@ public class EstadisticasDataFragment extends Fragment {
             dataSet.setCircleColor(ContextCompat.getColor(linear_layout.getContext(), R.color.balance));
             dataSet.setColor(ContextCompat.getColor(linear_layout.getContext(), R.color.balance));
 
+
             LineData lineData = new LineData(dataSet);
 
             lineChart.setData(lineData);
             lineChart.setMinimumWidth(linear_layout.getWidth());
             lineChart.setMinimumHeight(646);
+
+            XAxis xAxis = lineChart.getXAxis();
+            xAxis.setGranularity(1f);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
+
+            YAxis rightYAxis = lineChart.getAxisRight();
+            rightYAxis.setEnabled(false);
             linear_layout.addView(lineChart);
+
+            lineChart.invalidate();
         }
 
     }
