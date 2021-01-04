@@ -18,4 +18,6 @@
         <item>Ingreso</item>
         <item>Gasto</item>
     </string-array>
+    <string name="income">Ingreso</string>
+    <string name="spend">Gasto</string>
 </resources>

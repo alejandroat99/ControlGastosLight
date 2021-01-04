@@ -18,4 +18,6 @@
         <item>Entry</item>
         <item>Expense</item>
     </string-array>
+    <string name="spend">Spend</string>
+    <string name="income">Income</string>
 </resources>
