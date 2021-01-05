@@ -10,6 +10,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 
 
+import com.example.controlgastoslight.db.dao.GrupoDao;
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
 
