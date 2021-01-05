@@ -61,9 +61,11 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_width="381dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/panel_color_medio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,22 +98,26 @@
                     android:text="@string/barra_año" />
             </com.google.android.material.tabs.TabLayout>
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager"
-                    android:layout_width="381dp"
-                    android:layout_height="247dp"
-                    android:background="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="247dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
             </androidx.viewpager.widget.ViewPager>
 
             <View
                 android:id="@+id/Balance"
-                android:layout_width="381dp"
+                android:layout_width="0dp"
                 android:layout_height="210dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="160dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/panel_color"
                 android:foregroundGravity="center_vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -158,40 +164,52 @@
                 app:layout_constraintStart_toStartOf="@+id/pGIncome"
                 app:layout_constraintTop_toTopOf="@+id/Balance" />
 
-            <TextView
-                android:id="@+id/tVRevenue"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/Welcome"
-                android:textColor="@color/black"
-                android:textSize="30dp"
+                android:layout_marginBottom="9dp"
+                app:layout_constraintBottom_toTopOf="@+id/Balance"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.088"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="240dp"
-                android:layout_height="150dp"
-                android:layout_marginStart="173dp"
-                android:src="@drawable/component_flap_global_artwork"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tVRevenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/Welcome"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.088"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="258dp"
-                android:layout_height="81dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="70dp"
-                android:src="@drawable/team_at_work_solid"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="240dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="173dp"
+                    android:src="@drawable/component_flap_global_artwork"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/view3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="258dp"
+                    android:layout_height="81dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="70dp"
+                    android:src="@drawable/team_at_work_solid"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </FrameLayout>
+
 
             <ProgressBar
                 android:id="@+id/pGIncome"
