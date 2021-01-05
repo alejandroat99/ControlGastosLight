@@ -102,18 +102,24 @@ public class HomeFragment extends Fragment {
         pGExpenses = view.findViewById(R.id.pGLosses);
 
         // Calculating Balance
+        refresh(view);
+
+        // Configuring "New Entry" button
+        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
+
+    }
+
+    private void refresh(View view) {
         double[] balance;
         double total;
         registroViewModel = new ViewModelProvider(this).get(RegistroViewModel.class);
         balance = registroViewModel.getBalance();
         total = balance[0] + balance[1];
-        tVIncomes.setText(Double.toString(balance[0])+"€");
-        tVExpenses.setText(Double.toString(balance[1])+"€");
+        tVIncomes.setText(String.format("%.2f€", balance[0])  /*Double.toString(balance[0])+"€"*/);
+        tVExpenses.setText(String.format("%.2f€", balance[1])/*Double.toString(balance[1])+"€"*/);
         pGIncome.setProgress(( (int) ((balance[0]/total) * 100)));
         pGExpenses.setProgress(( (int) ((balance[1]/total) * 100)));
 
-        // Configuring "New Entry" button
-        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
         TextView text_test_registros = (TextView) view.findViewById(R.id.text_test_registros);
         RegistroActions ra = new RegistroActions(view.getContext());
         try {
@@ -124,5 +130,11 @@ public class HomeFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh(getView());
     }
 }
