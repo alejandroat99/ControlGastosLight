@@ -48,9 +48,14 @@ public class Grupo {
 
     @Override
     public String toString() {
+        return getLabel();
+    }
+    /*
+    public String toString() {
         return "Grupo{" +
                 "grupoId=" + grupoId +
                 ", label='" + label + '\'' +
                 '}';
     }
+    */
 }
