@@ -105,4 +105,10 @@ public class GruposFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh(getView());
+    }
 }
