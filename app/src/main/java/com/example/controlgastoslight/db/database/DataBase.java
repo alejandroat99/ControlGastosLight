@@ -26,7 +26,7 @@ public abstract class DataBase extends RoomDatabase {
     public static synchronized DataBase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), DataBase.class).allowMainThreadQueries().
+                    Room.databaseBuilder(context, DataBase.class, "ControlGastos").allowMainThreadQueries().
                             fallbackToDestructiveMigration().build();
         }
         return INSTANCE;

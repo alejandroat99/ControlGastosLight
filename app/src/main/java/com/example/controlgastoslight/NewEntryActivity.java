@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.controlgastoslight.db.actions.RegistroActions;
+import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
 import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
@@ -87,13 +88,13 @@ public class NewEntryActivity extends AppCompatActivity {
         registry.setGasto(movType);
         registry.setValue(quantity);
         registry.setFecha(Utils.getDate());
-        rA.insert(registry);
-
+        registryId = DataBase.getInMemoryDatabase(this).registroDao().addRegistro(registry);
+        System.out.println("Regstro Id: " + registryId);
         if(groupSelected.getGrupoId() != -1) { // Group selected
             RegistroGrupoCrossRef relacion = new RegistroGrupoCrossRef();
-
             relacion.setGrupoId(groupSelected.getGrupoId());
-            relacion.setRegistroId(registry.getRegistroId());
+            relacion.setRegistroId((int) registryId);
+            DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().insert(relacion);
         }
 
         finish();

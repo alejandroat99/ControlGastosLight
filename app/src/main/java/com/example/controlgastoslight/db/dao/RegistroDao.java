@@ -33,7 +33,7 @@ public interface RegistroDao {
     public List<RegistroWithGrupos> getRegistroWithGrupos();
 
     @Insert
-    void addRegistro(Registro r);
+    long addRegistro(Registro r);
 
     @Delete
     void deleteRegistro(Registro r);

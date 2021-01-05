@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.controlgastoslight.db.actions.GrupoActions;
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.actions.RegistroGrupoCrossRefActions;
+import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
 import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
@@ -137,11 +138,11 @@ public class GrupoDetailActivity extends AppCompatActivity {
             index++;
         }
         LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, "");
-        dataSet_gastos.setColor(R.color.gasto);
-        dataSet_gastos.setCircleColor(R.color.gasto);
+        dataSet_gastos.setColor(getColor(R.color.gasto));
+        dataSet_gastos.setCircleColor(getColor(R.color.gasto));
         LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, "");
-        dataSet_ingresos.setColor(R.color.ingreso);
-        dataSet_ingresos.setCircleColor(R.color.ingreso);
+        dataSet_ingresos.setColor(getColor(R.color.ingreso));
+        dataSet_ingresos.setCircleColor(getColor(R.color.ingreso));
 
         LineData data = new LineData();
         data.addDataSet(dataSet_gastos);
@@ -167,9 +168,12 @@ public class GrupoDetailActivity extends AppCompatActivity {
             entries.add(new PieEntry(ingresos, R.string.income));
 
             PieDataSet dataSet = new PieDataSet(entries, " ");
-            dataSet.setColors(R.color.gasto, R.color.ingreso);
+            dataSet.setColors(
+                    getColor(R.color.gasto), getColor(R.color.ingreso)
+            );
             PieData data = new PieData(dataSet);
             chart.setData(data);
+            chart.setUsePercentValues(true);
         }
         chart.invalidate();
     }
@@ -186,7 +190,9 @@ public class GrupoDetailActivity extends AppCompatActivity {
         entries.add(new BarEntry(1, ingresos));
 
         BarDataSet dataSet = new BarDataSet(entries, " ");
-        dataSet.setColors(R.color.gasto, R.color.ingreso);
+        dataSet.setColors(
+                getColor(R.color.gasto), getColor(R.color.ingreso)
+        );
         BarData data = new BarData(dataSet);
         chart.setData(data);
 
@@ -197,8 +203,10 @@ public class GrupoDetailActivity extends AppCompatActivity {
     }
 
     private void load_registros() {
-        RegistroGrupoCrossRefActions rga = new RegistroGrupoCrossRefActions(this);
-        List<RegistroGrupoCrossRef> relaciones = rga.getRelacionByGrupo(grupo.getGrupoId());
+        List<RegistroGrupoCrossRef> relaciones = DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao()
+                .getRelacionByGrupo(grupo.getGrupoId());
+
+        System.out.println("Relaciones Cargadas: " + relaciones.size());
         RegistroActions ra = new RegistroActions(this);
         registros = new ArrayList<>();
         for(RegistroGrupoCrossRef rel : relaciones){

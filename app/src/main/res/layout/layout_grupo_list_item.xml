@@ -14,7 +14,7 @@
         android:text="Grupo Label"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_info"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

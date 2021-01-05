@@ -21,6 +21,9 @@ public interface RegistroGrupoCrossRefDao {
     @Delete()
     void delete(RegistroGrupoCrossRef rel);
 
+    @Query("SELECT * FROM RegistroGrupoCrossRef")
+    List<RegistroGrupoCrossRef> getAll();
+
     @Query("SELECT * FROM RegistroGrupoCrossRef WHERE registroId=:registroId AND grupoId=:grupoId")
     RegistroGrupoCrossRef getRelacion(int registroId, int grupoId);
 

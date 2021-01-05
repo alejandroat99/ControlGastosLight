@@ -103,6 +103,7 @@ public class GruposFragment extends Fragment {
 
         try {
             ArrayList<Grupo> grupos = new ArrayList<Grupo>(ga.getAllGrupos());
+            System.out.println("Grupos cargados: " + grupos.size());
             GrupoListAdapter adapter = new GrupoListAdapter(grupos, view.getContext());
             list.setAdapter(adapter);
         } catch (ExecutionException e) {
