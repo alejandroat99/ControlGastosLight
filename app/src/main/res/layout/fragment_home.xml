@@ -8,150 +8,156 @@
     android:orientation="vertical"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/p_background">
+        android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view3"
-            android:layout_width="668dp"
-            android:layout_height="149dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:background="@drawable/panel_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btNewEntry"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="181dp"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/ic_add"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager" />
-
-        <TextView
-            android:id="@+id/text_test_registros"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btNewEntry"
-            app:layout_constraintHorizontal_bias="0.889"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewPager"
-            app:layout_constraintVertical_bias="0.932" />
+            android:background="@color/p_background">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="381dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/panel_color_medio"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4">
+            <View
+                android:id="@+id/view3"
+                android:layout_width="668dp"
+                android:layout_height="149dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                android:background="@drawable/panel_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabToday"
+            <ImageButton
+                android:id="@+id/btNewEntry"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="181dp"
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/ic_add"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager" />
+
+            <TextView
+                android:id="@+id/text_test_registros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/barra_hoy" />
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btNewEntry"
+                app:layout_constraintHorizontal_bias="0.889"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/viewPager"
+                app:layout_constraintVertical_bias="0.932" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabWeek"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="381dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/panel_color_medio"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tabToday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra_hoy" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tabWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra_semana" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tabMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra_mes" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tabYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barra_año" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="381dp"
+                android:layout_height="247dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="381dp"
+                android:layout_height="179dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/panel_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tVWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/barra_semana" />
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/Balance"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view4" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabMonth"
+            <TextView
+                android:id="@+id/tVRevenue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/barra_mes" />
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/Welcome"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.088"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/barra_año" />
-        </com.google.android.material.tabs.TabLayout>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="240dp"
+                android:layout_height="150dp"
+                android:src="@drawable/component_flap_global_artwork"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="381dp"
-            android:layout_height="247dp"
-            android:layout_marginStart="15dp"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="247dp"
+                android:layout_height="88dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="69dp"
+                android:src="@drawable/team_at_work_solid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.viewpager.widget.ViewPager>
-
-        <View
-            android:id="@+id/view4"
-            android:layout_width="381dp"
-            android:layout_height="179dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="160dp"
-            android:background="@drawable/panel_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tVWelcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/helvetica_neue_light"
-            android:text="@string/Balance"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view4" />
-
-        <TextView
-            android:id="@+id/tVRevenue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/helvetica_neue_light"
-            android:text="@string/Welcome"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="240dp"
-            android:layout_height="150dp"
-            android:src="@drawable/component_flap_global_artwork"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="247dp"
-            android:layout_height="88dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="69dp"
-            android:src="@drawable/team_at_work_solid"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>
