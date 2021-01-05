@@ -22,4 +22,6 @@
     <string name="hint_quantity">Cantidad (€)</string>
     <string name="Welcome">¡Bienvenido!</string>
     <string name="Balance">Su balance</string>
+    <string name="Incomes">Ganancias</string>
+    <string name="Expenses">Gastos</string>
 </resources>

@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.controlgastoslight.EstadisticasDataFragment;
 
 public class EstadisticasPageAdapter extends FragmentPagerAdapter {
-    private int numTabs;
+    private final int numTabs;
 
     public EstadisticasPageAdapter(FragmentManager fm, int numTabs){
         super(fm);
