@@ -122,10 +122,10 @@ public class GrupoDetailActivity extends AppCompatActivity {
             entries_ingresos.add(new Entry(index, ingresos_day_total));
             index++;
         }
-        LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, "");
+        LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, getString(R.string.spend));
         dataSet_gastos.setColor(getColor(R.color.gasto));
         dataSet_gastos.setCircleColor(getColor(R.color.gasto));
-        LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, "");
+        LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, getString(R.string.income));
         dataSet_ingresos.setColor(getColor(R.color.ingreso));
         dataSet_ingresos.setCircleColor(getColor(R.color.ingreso));
 
@@ -158,10 +158,10 @@ public class GrupoDetailActivity extends AppCompatActivity {
             entries_ingresos.add(new Entry(index, ingresos_day_total));
             index++;
         }
-        LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, "");
+        LineDataSet dataSet_gastos = new LineDataSet(entries_gastos, getString(R.string.spend));
         dataSet_gastos.setColor(getColor(R.color.gasto));
         dataSet_gastos.setCircleColor(getColor(R.color.gasto));
-        LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, "");
+        LineDataSet dataSet_ingresos = new LineDataSet(entries_ingresos, getString(R.string.income));
         dataSet_ingresos.setColor(getColor(R.color.ingreso));
         dataSet_ingresos.setCircleColor(getColor(R.color.ingreso));
 
@@ -185,16 +185,18 @@ public class GrupoDetailActivity extends AppCompatActivity {
             float ingresos = tipos.get(false).size() / total;
 
             List<PieEntry> entries = new ArrayList<>();
-            entries.add(new PieEntry(gastos, R.string.spend));
-            entries.add(new PieEntry(ingresos, R.string.income));
+            entries.add(new PieEntry(gastos, getString(R.string.spend)));
+            entries.add(new PieEntry(ingresos, getString(R.string.income)));
 
-            PieDataSet dataSet = new PieDataSet(entries, " ");
+            PieDataSet dataSet = new PieDataSet(entries, "");
             dataSet.setColors(
                     getColor(R.color.gasto), getColor(R.color.ingreso)
             );
             PieData data = new PieData(dataSet);
             chart.setData(data);
             chart.setUsePercentValues(true);
+            chart.setDrawEntryLabels(true);
+            chart.setEntryLabelColor(getColor(R.color.p_negro));
         }
         chart.invalidate();
     }
@@ -210,7 +212,7 @@ public class GrupoDetailActivity extends AppCompatActivity {
         entries.add(new BarEntry(0, gastos));
         entries.add(new BarEntry(1, ingresos));
 
-        BarDataSet dataSet = new BarDataSet(entries, " ");
+        BarDataSet dataSet = new BarDataSet(entries, getString(R.string.spend) + " " + getString(R.string.income));
         dataSet.setColors(
                 getColor(R.color.gasto), getColor(R.color.ingreso)
         );

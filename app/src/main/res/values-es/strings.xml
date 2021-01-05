@@ -29,4 +29,8 @@
     <string name="statistics">Estadísticas</string>
     <string name="icon">Icono</string>
     <string name="color">Color</string>
+    <string name="dinero_total">Dinero Total</string>
+    <string name="total_types">Total de tipos</string>
+    <string name="last_month">Último Mes</string>
+    <string name="year">Año</string>
 </resources>

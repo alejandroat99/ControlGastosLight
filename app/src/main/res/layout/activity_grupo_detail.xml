@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/p_background"
     tools:context=".GrupoDetailActivity">
 
     <ScrollView
@@ -24,6 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/panel_color"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -43,27 +45,74 @@
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/dinero_total"
+                android:textSize="18sp" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/group_barchart_totals"
                 android:layout_width="match_parent"
-                android:layout_height="364dp" />
+                android:layout_height="364dp"
+                android:background="@drawable/panel_color">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/total_types"
+                android:textSize="18sp" />
 
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/group_piechart_porcentajes"
                 android:layout_width="match_parent"
-                android:layout_height="364dp" />
+                android:layout_height="364dp"
+                android:background="@drawable/panel_color">
+
+            </com.github.mikephil.charting.charts.PieChart>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/last_month"
+                android:textSize="18sp" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/group_month_record"
                 android:layout_width="match_parent"
-                android:layout_height="364dp" />
+                android:layout_height="364dp"
+                android:background="@drawable/panel_color">
+
+            </com.github.mikephil.charting.charts.LineChart>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/year"
+                android:textSize="18sp" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/group_linechart_all"
                 android:layout_width="match_parent"
-                android:layout_height="364dp" />
+                android:layout_height="364dp"
+                android:background="@drawable/panel_color" />
 
         </LinearLayout>
     </ScrollView>

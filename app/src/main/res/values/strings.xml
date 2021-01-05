@@ -34,4 +34,8 @@
     <string name="statistics">Statistics</string>
     <string name="icon">Icon</string>
     <string name="color">Color</string>
+    <string name="dinero_total">Total Money</string>
+    <string name="total_types">Total of Types</string>
+    <string name="last_month">Last Month</string>
+    <string name="year">Year</string>
 </resources>
