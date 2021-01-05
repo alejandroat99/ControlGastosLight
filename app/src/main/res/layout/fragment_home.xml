@@ -8,150 +8,188 @@
     android:orientation="vertical"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/p_background">
+        android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view3"
-            android:layout_width="668dp"
-            android:layout_height="149dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:background="@drawable/panel_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btNewEntry"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="181dp"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/ic_add"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager" />
-
-        <TextView
-            android:id="@+id/text_test_registros"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btNewEntry"
-            app:layout_constraintHorizontal_bias="0.889"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewPager"
-            app:layout_constraintVertical_bias="0.932" />
+            android:orientation="vertical" >
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="381dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/panel_color_medio"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view4">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabToday"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/barra_hoy" />
+                android:background="@color/p_background">
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabWeek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/barra_semana" />
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="149dp"
+                    android:background="@drawable/panel_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/barra_mes" />
+                <ImageButton
+                    android:id="@+id/btNewEntry"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="180dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/ic_add"
+                    android:contentDescription="Add a new entry"
+                    android:gravity="center_vertical"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager"
+                    app:layout_constraintVertical_bias="1.0" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/barra_año" />
-        </com.google.android.material.tabs.TabLayout>
+                <TextView
+                    android:id="@+id/text_test_registros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btNewEntry"
+                    app:layout_constraintHorizontal_bias="0.889"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/viewPager"
+                    app:layout_constraintVertical_bias="0.932" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="381dp"
-            android:layout_height="247dp"
-            android:layout_marginStart="15dp"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="381dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/panel_color_medio"
+                    android:gravity="center_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Balance">
 
-        </androidx.viewpager.widget.ViewPager>
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabToday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barra_hoy" />
 
-        <View
-            android:id="@+id/view4"
-            android:layout_width="381dp"
-            android:layout_height="179dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="160dp"
-            android:background="@drawable/panel_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barra_semana" />
 
-        <TextView
-            android:id="@+id/tVWelcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/helvetica_neue_light"
-            android:text="@string/Balance"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view4" />
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barra_mes" />
 
-        <TextView
-            android:id="@+id/tVRevenue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/helvetica_neue_light"
-            android:text="@string/Welcome"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barra_año" />
+                </com.google.android.material.tabs.TabLayout>
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="240dp"
-            android:layout_height="150dp"
-            android:src="@drawable/component_flap_global_artwork"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="381dp"
+                    android:layout_height="247dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="247dp"
-            android:layout_height="88dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="69dp"
-            android:src="@drawable/team_at_work_solid"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                </androidx.viewpager.widget.ViewPager>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/Balance"
+                    android:layout_width="381dp"
+                    android:layout_height="210dp"
+                    android:layout_marginTop="160dp"
+                    android:background="@drawable/panel_color"
+                    android:foregroundGravity="center_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:id="@+id/tVWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/Balance"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/Balance" />
+
+                <TextView
+                    android:id="@+id/tVRevenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:text="@string/Welcome"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="240dp"
+                    android:layout_height="149dp"
+                    android:layout_marginStart="173dp"
+                    android:src="@drawable/component_flap_global_artwork"
+                    app:layout_constraintStart_toStartOf="@+id/view3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="239dp"
+                    android:layout_height="73dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="76dp"
+                    android:src="@drawable/team_at_work_solid"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="160dp"
+                    android:layout_height="121dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Balance"
+                    app:layout_constraintStart_toStartOf="@+id/Balance" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="160dp"
+                    android:layout_height="121dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Balance"
+                    app:layout_constraintEnd_toEndOf="@+id/Balance" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
