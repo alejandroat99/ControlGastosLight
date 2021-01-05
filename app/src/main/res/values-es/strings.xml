@@ -16,4 +16,8 @@
     <string name="spend">Gasto</string>
     <string name="income">Ingreso</string>
     <string name="balance">Balance</string>
+    <string name="no_group">Sin grupo</string>
+    <string name="hint_description">Escribe una breve descripción</string>
+    <string name="group">Grupo</string>
+    <string name="hint_quantity">Cantidad (€)</string>
 </resources>

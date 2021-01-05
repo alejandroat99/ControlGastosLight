@@ -23,4 +23,6 @@
     <string name="spend">Spend</string>
     <string name="income">Income</string>
     <string name="balance">Balance</string>
+    <string name="no_group">Without group</string>
+    <string name="hint_quantity">Amount (€)</string>
 </resources>

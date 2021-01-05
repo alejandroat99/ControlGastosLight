@@ -1,8 +1,12 @@
 package com.example.controlgastoslight;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,33 +14,42 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controlgastoslight.db.actions.RegistroActions;
+import com.example.controlgastoslight.db.model.Grupo;
+import com.example.controlgastoslight.db.model.GrupoWithRegistros;
 import com.example.controlgastoslight.db.model.Registro;
+import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
+import com.example.controlgastoslight.db.viewModels.GrupoViewModel;
 import com.example.controlgastoslight.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class NewEntryActivity extends AppCompatActivity {
+    GrupoViewModel grupoViewModel;
     RegistroActions rA;
 
-    Spinner spinnerMovType;
+    Spinner spinnerMovType, spinnerGroup;
     EditText eTTitle, eTDescription, eTQuantity;
     Button btnSave;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
+        grupoViewModel = new ViewModelProvider(this).get(GrupoViewModel.class);
 
         // Associating Edit Texts
         eTTitle = findViewById(R.id.eTTitle);
         eTDescription = findViewById(R.id.eTDescription);
         eTQuantity = findViewById(R.id.formQuantity);
 
-        // Setting Spinner
+        // Setting Mov. Type Spinner
         spinnerMovType = findViewById(R.id.spinnerMovType);
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.movementTypes, android.R.layout.simple_spinner_item);
-        spinnerMovType.setAdapter(spinnerAdapter);
+        ArrayAdapter<CharSequence> spinnerMTAdapter = ArrayAdapter.createFromResource(this, R.array.movementTypes, android.R.layout.simple_spinner_item);
+        spinnerMovType.setAdapter(spinnerMTAdapter);
 
         // Configuring save button
         btnSave = findViewById(R.id.btnSaveEntry);
@@ -44,26 +57,54 @@ public class NewEntryActivity extends AppCompatActivity {
 
         // Configuring RegistroActions
         rA = new RegistroActions(this.getBaseContext());
+
+        // Setting Group Spinner
+        spinnerGroup = findViewById(R.id.spinnerGroup);
+
+        // Configuring Grupos
+        List<Grupo> groups = grupoViewModel.getGrupos();
+
+        Grupo vacio = new Grupo();
+        vacio.setLabel(getResources().getString(R.string.no_group));
+        vacio.setGrupoId(-1);
+        groups.add(0, vacio);
+
+        ArrayAdapter spinnerGroupAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, groups);
+        spinnerGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGroup.setAdapter(spinnerGroupAdapter);
     }
 
     private void saveChanges() {
         String title, description;
         float quantity;
         boolean movType;
+        Grupo groupSelected;
+        long registryId;
+
+        groupSelected = (Grupo) spinnerGroup.getSelectedItem();
 
         title = eTTitle.getText().toString();
         description = eTDescription.getText().toString();
         quantity = Float.parseFloat(eTQuantity.getText().toString());
         movType = spinnerMovType.getSelectedItemPosition() != 0;
 
+
         Registro registry = new Registro();
         registry.setTitulo(title);
         registry.setDescripcion(description);
         registry.setGasto(movType);
         registry.setValue(quantity);
-        //registry.setFecha(Calendar.getInstance().getTime().toString());
         registry.setFecha(Utils.getDate());
         rA.insert(registry);
-        finish();
+
+        if(groupSelected.getGrupoId() != -1) { // Group selected
+            RegistroGrupoCrossRef relacion = new RegistroGrupoCrossRef();
+
+            relacion.setGrupoId(groupSelected.getGrupoId());
+            relacion.setRegistroId(registry.getRegistroId());
+        }
+
+
+        //finish();
     }
 }
