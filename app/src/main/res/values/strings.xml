@@ -25,4 +25,6 @@
     <string name="balance">Balance</string>
     <string name="no_group">Without group</string>
     <string name="hint_quantity">Amount (€)</string>
+    <string name="Welcome">Welcome!</string>
+    <string name="Balance">Your Balance</string>
 </resources>

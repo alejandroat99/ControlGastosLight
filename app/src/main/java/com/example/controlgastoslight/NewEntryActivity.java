@@ -1,29 +1,21 @@
 package com.example.controlgastoslight;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.model.Grupo;
-import com.example.controlgastoslight.db.model.GrupoWithRegistros;
 import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
 import com.example.controlgastoslight.db.viewModels.GrupoViewModel;
 import com.example.controlgastoslight.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class NewEntryActivity extends AppCompatActivity {
@@ -104,7 +96,6 @@ public class NewEntryActivity extends AppCompatActivity {
             relacion.setRegistroId(registry.getRegistroId());
         }
 
-
-        //finish();
+        finish();
     }
 }

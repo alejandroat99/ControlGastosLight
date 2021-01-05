@@ -20,4 +20,6 @@
     <string name="hint_description">Escribe una breve descripción</string>
     <string name="group">Grupo</string>
     <string name="hint_quantity">Cantidad (€)</string>
+    <string name="Welcome">¡Bienvenido!</string>
+    <string name="Balance">Su balance</string>
 </resources>
