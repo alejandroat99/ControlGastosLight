@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -13,9 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.controlgastoslight.db.actions.RegistroActions;
+import com.example.controlgastoslight.db.viewModels.RegistroViewModel;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -41,6 +45,9 @@ public class HomeFragment extends Fragment {
     ViewPager viewPager;
     TabItem tabToday, tabWeek, tabMonth, tabYear;
     ImageButton btnNewEntry;
+    TextView tVIncomes, tVExpenses;
+    RegistroViewModel registroViewModel;
+    ProgressBar pGIncome, pGExpenses;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -89,6 +96,21 @@ public class HomeFragment extends Fragment {
         tabMonth = view.findViewById(R.id.tabMonth);
         tabYear = view.findViewById(R.id.tabYear);
         btnNewEntry = view.findViewById(R.id.btNewEntry);
+        tVIncomes = view.findViewById(R.id.tVIncomes);
+        tVExpenses = view.findViewById(R.id.tVExpenses);
+        pGIncome = view.findViewById(R.id.pGIncome);
+        pGExpenses = view.findViewById(R.id.pGLosses);
+
+        // Calculating Balance
+        double[] balance;
+        double total;
+        registroViewModel = new ViewModelProvider(this).get(RegistroViewModel.class);
+        balance = registroViewModel.getBalance();
+        total = balance[0] + balance[1];
+        tVIncomes.setText(Double.toString(balance[0])+"€");
+        tVExpenses.setText(Double.toString(balance[1])+"€");
+        pGIncome.setProgress(( (int) ((balance[0]/total) * 100)));
+        pGExpenses.setProgress(( (int) ((balance[1]/total) * 100)));
 
         // Configuring "New Entry" button
         btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
