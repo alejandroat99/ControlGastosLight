@@ -113,7 +113,7 @@ public class EstadisticasDataFragment extends Fragment {
      * @param registros
      */
     private void load_graphs(LinearLayout linear_layout, List<Registro> registros) {
-        if (registros.size() > 0) {
+        if (registros != null && registros.size() > 0) {
             load_chart_resume(linear_layout, registros);
             load_piechart_porcentajes(linear_layout, registros);
             load_linechart_balance(linear_layout, registros);
