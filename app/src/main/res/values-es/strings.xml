@@ -24,4 +24,9 @@
     <string name="Balance">Su balance</string>
     <string name="Incomes">Ganancias</string>
     <string name="Expenses">Gastos</string>
+    <string name="home">Inicio</string>
+    <string name="groups">Grupos</string>
+    <string name="statistics">Estadísticas</string>
+    <string name="icon">Icono</string>
+    <string name="color">Color</string>
 </resources>

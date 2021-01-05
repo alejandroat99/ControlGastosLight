@@ -16,6 +16,28 @@ public class Grupo {
     @ColumnInfo(name = "label")
     private String label;
 
+    @ColumnInfo(name = "icono")
+    private int icono;
+
+    @ColumnInfo(name = "color")
+    private int color;
+
+    public int getIcono() {
+        return icono;
+    }
+
+    public void setIcono(int icono) {
+        this.icono = icono;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
     public int getGrupoId() {
         return grupoId;
     }
@@ -50,12 +72,4 @@ public class Grupo {
     public String toString() {
         return getLabel();
     }
-    /*
-    public String toString() {
-        return "Grupo{" +
-                "grupoId=" + grupoId +
-                ", label='" + label + '\'' +
-                '}';
-    }
-    */
 }

@@ -30,9 +30,14 @@ android {
 
 repositories{
     maven { url 'https://jitpack.io' }
+    jcenter()
 }
 
 dependencies {
+
+    implementation 'com.pes.materialcolorpicker:library:1.2.5'
+    implementation "com.maltaisn:icondialog:3.1.0"
+    implementation "com.maltaisn:iconpack-default:1.0.0"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.2'

@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import androidx.room.Room;
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
+import com.example.controlgastoslight.utils.SingletonMap;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -13,7 +15,8 @@ public class RegistroGrupoCrossRefActions {
     private DataBase db;
 
     public RegistroGrupoCrossRefActions(Context context){
-        db = Room.databaseBuilder(context, DataBase.class, DB_NAME).build();
+        //db = Room.databaseBuilder(context, DataBase.class, DB_NAME).build();
+        db = (DataBase) SingletonMap.getSingletonMap("db");
     }
 
     public void insertTask(int registroId, int grupoId){

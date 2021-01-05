@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMovType" />
 
             <TextView
-                android:id="@+id/tVTitulo"
+                android:id="@+id/text_group_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
@@ -72,7 +72,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/eTTitle"
+                android:id="@+id/edittext_label"
                 android:layout_width="0dp"
                 android:layout_height="47dp"
                 android:layout_marginStart="20dp"
@@ -84,7 +84,7 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tVTitulo" />
+                app:layout_constraintTop_toBottomOf="@+id/text_group_name" />
 
             <TextView
                 android:id="@+id/tVDescripcion"
@@ -94,7 +94,7 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/description"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eTTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/edittext_label" />
 
             <EditText
                 android:id="@+id/eTDescription"
@@ -113,7 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tVDescripcion" />
 
             <Button
-                android:id="@+id/btnSaveEntry"
+                android:id="@+id/btn_save_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"

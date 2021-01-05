@@ -1,5 +1,6 @@
 package com.example.controlgastoslight;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -76,21 +78,12 @@ public class GruposFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Button btn_save = view.findViewById(R.id.btn_save);
-        TextView new_group = (TextView) view.findViewById(R.id.group_name);
-        btn_save.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn_add = (ImageButton) view.findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_label = String.valueOf(new_group.getText());
-                if(!new_label.isEmpty()) {
-                    Grupo g = new Grupo();
-                    g.setLabel(String.valueOf(new_group.getText()));
-                    GrupoActions ga = new GrupoActions(v.getContext());
-                    ga.insert(g);
-                    refresh(view);
-                    new_group.setText("");
-                    new_group.clearFocus();
-                }
+                Intent intent = new Intent(view.getContext(), NewGroupActivity.class);
+                startActivity(intent);
             }
         });
 

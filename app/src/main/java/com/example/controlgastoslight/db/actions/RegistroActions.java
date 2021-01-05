@@ -9,6 +9,7 @@ import androidx.room.Room;
 
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Registro;
+import com.example.controlgastoslight.utils.SingletonMap;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -18,7 +19,8 @@ public class RegistroActions {
     private DataBase db;
 
     public RegistroActions(Context context){
-        db = Room.databaseBuilder(context, DataBase.class, DB_NAME).build();
+        //db = Room.databaseBuilder(context, DataBase.class, DB_NAME).build();
+        db = (DataBase) SingletonMap.getSingletonMap("db");
     }
 
     public List<Registro> getAllRegistro() throws ExecutionException, InterruptedException {

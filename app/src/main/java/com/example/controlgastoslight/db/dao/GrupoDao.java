@@ -22,7 +22,7 @@ public interface GrupoDao {
     Grupo getGrupo(int id);
 
     @Insert
-    void addGrupo(Grupo g);
+    long addGrupo(Grupo g);
 
     @Delete
     void deleteGrupo(Grupo r);

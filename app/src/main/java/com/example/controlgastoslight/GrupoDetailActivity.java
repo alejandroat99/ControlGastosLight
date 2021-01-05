@@ -3,7 +3,10 @@ package com.example.controlgastoslight;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.controlgastoslight.db.actions.GrupoActions;
@@ -13,6 +16,7 @@ import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
 import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
+import com.example.controlgastoslight.utils.SingletonMap;
 import com.example.controlgastoslight.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -28,6 +32,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.maltaisn.icondialog.data.Icon;
+import com.maltaisn.icondialog.pack.IconPack;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,6 +64,21 @@ public class GrupoDetailActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.text_group_label);
         textView.setText(grupo.getLabel());
+
+        ImageView icon_view = (ImageView) findViewById(R.id.icono_view);
+        int icono_id = grupo.getIcono();
+        int color = grupo.getColor();
+
+        if(icono_id != -1){
+            IconPack iconPack = (IconPack) SingletonMap.getSingletonMap("iconPack");
+            Icon icon = iconPack.getIcon(icono_id);
+            Drawable icono_image = icon.getDrawable();
+
+            if(color != -1){
+                icono_image.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+            }
+            icon_view.setBackground(icono_image);
+        }
 
         load_registros();
         load_graphs();

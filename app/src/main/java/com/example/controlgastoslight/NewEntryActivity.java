@@ -35,7 +35,7 @@ public class NewEntryActivity extends AppCompatActivity {
         grupoViewModel = new ViewModelProvider(this).get(GrupoViewModel.class);
 
         // Associating Edit Texts
-        eTTitle = findViewById(R.id.eTTitle);
+        eTTitle = findViewById(R.id.edittext_label);
         eTDescription = findViewById(R.id.eTDescription);
         eTQuantity = findViewById(R.id.formQuantity);
 
@@ -45,7 +45,7 @@ public class NewEntryActivity extends AppCompatActivity {
         spinnerMovType.setAdapter(spinnerMTAdapter);
 
         // Configuring save button
-        btnSave = findViewById(R.id.btnSaveEntry);
+        btnSave = findViewById(R.id.btn_save_group);
         btnSave.setOnClickListener(v -> saveChanges());
 
         // Configuring RegistroActions

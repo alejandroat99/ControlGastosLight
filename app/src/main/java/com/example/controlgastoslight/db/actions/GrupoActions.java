@@ -13,6 +13,7 @@ import androidx.room.Room;
 import com.example.controlgastoslight.db.dao.GrupoDao;
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
+import com.example.controlgastoslight.utils.SingletonMap;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -22,7 +23,8 @@ public class GrupoActions {
     private DataBase db;
 
     public GrupoActions(Context context){
-        db = DataBase.getInMemoryDatabase(context);
+        //db = DataBase.getInMemoryDatabase(context);
+        db = (DataBase) SingletonMap.getSingletonMap("db");
     }
 
     public List<Grupo> getAllGrupos() throws ExecutionException, InterruptedException {

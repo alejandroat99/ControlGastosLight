@@ -29,4 +29,9 @@
     <string name="Balance">Your Balance</string>
     <string name="Incomes">Income</string>
     <string name="Expenses">Expenses</string>
+    <string name="home">Home</string>
+    <string name="groups">Groups</string>
+    <string name="statistics">Statistics</string>
+    <string name="icon">Icon</string>
+    <string name="color">Color</string>
 </resources>
