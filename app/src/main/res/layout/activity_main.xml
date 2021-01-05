@@ -10,10 +10,13 @@
         android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemRippleColor="@color/p_verde"
+        app:itemTextColor="@color/bottom_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bottom"/>
+        app:menu="@menu/menu_bottom"
+        app:itemIconTint="@color/bottom_nav_color"/>
 
     <fragment
         android:id="@+id/host_fragment"
