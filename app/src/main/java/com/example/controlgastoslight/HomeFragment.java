@@ -89,6 +89,17 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        associateElements(view);
+
+        // Calculating Balance
+        refresh(view);
+
+        // Configuring "New Entry" button
+        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
+
+    }
+
+    private void associateElements(@NonNull View view) {
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
         tabToday = view.findViewById(R.id.tabToday);
@@ -100,13 +111,6 @@ public class HomeFragment extends Fragment {
         tVExpenses = view.findViewById(R.id.tVExpenses);
         pGIncome = view.findViewById(R.id.pGIncome);
         pGExpenses = view.findViewById(R.id.pGLosses);
-
-        // Calculating Balance
-        refresh(view);
-
-        // Configuring "New Entry" button
-        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
-
     }
 
     private void refresh(View view) {
@@ -115,8 +119,8 @@ public class HomeFragment extends Fragment {
         registroViewModel = new ViewModelProvider(this).get(RegistroViewModel.class);
         balance = registroViewModel.getBalance();
         total = balance[0] + balance[1];
-        tVIncomes.setText(String.format("%.2f€", balance[0])  /*Double.toString(balance[0])+"€"*/);
-        tVExpenses.setText(String.format("%.2f€", balance[1])/*Double.toString(balance[1])+"€"*/);
+        tVIncomes.setText(String.format("%.2f€", balance[0]));
+        tVExpenses.setText(String.format("%.2f€", balance[1]));
         pGIncome.setProgress(( (int) ((balance[0]/total) * 100)));
         pGExpenses.setProgress(( (int) ((balance[1]/total) * 100)));
 

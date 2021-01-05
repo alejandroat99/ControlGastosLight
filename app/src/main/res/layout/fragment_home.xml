@@ -237,26 +237,26 @@
                 app:layout_constraintEnd_toEndOf="@+id/Balance" />
 
             <TextView
-                android:fontFamily="@font/helvetica_neue_light"
                 android:id="@+id/tVIncomes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="76dp"
                 android:layout_marginBottom="52dp"
+                android:fontFamily="@font/helvetica_neue_light"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/pGIncome"
-                app:layout_constraintStart_toStartOf="@+id/Balance" />
+                app:layout_constraintEnd_toEndOf="@+id/pGIncome"
+                app:layout_constraintStart_toStartOf="@+id/pGIncome" />
 
             <TextView
                 android:id="@+id/tVExpenses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="76dp"
                 android:layout_marginBottom="52dp"
                 android:fontFamily="@font/helvetica_neue_light"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="@+id/pGLosses"
-                app:layout_constraintEnd_toEndOf="@+id/Balance" />
+                app:layout_constraintEnd_toEndOf="@+id/pGLosses"
+                app:layout_constraintStart_toStartOf="@+id/pGLosses" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
