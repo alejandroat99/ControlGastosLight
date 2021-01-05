@@ -22,7 +22,7 @@ public class GrupoActions {
     private DataBase db;
 
     public GrupoActions(Context context){
-        db = Room.databaseBuilder(context, DataBase.class, DB_NAME).build();
+        db = DataBase.getInMemoryDatabase(context);
     }
 
     public List<Grupo> getAllGrupos() throws ExecutionException, InterruptedException {
