@@ -39,4 +39,13 @@
     <string name="last_month">Last Month</string>
     <string name="year">Year</string>
     <string name="goals">Goals</string>
+    <string name="type_goal">Goal Type</string>
+    <string name="space_time">Space of time</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="annual">Annual</string>
+    <string name="no_spend">Don\'t Spend</string>
+    <string name="save_money">Save</string>
+    <string name="positive_balance">Positive Balance</string>
 </resources>

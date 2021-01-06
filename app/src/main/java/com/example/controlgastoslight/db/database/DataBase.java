@@ -7,14 +7,16 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.controlgastoslight.db.dao.GrupoDao;
+import com.example.controlgastoslight.db.dao.MetaDao;
 import com.example.controlgastoslight.db.dao.RegistroDao;
 import com.example.controlgastoslight.db.dao.RegistroGrupoCrossRefDao;
 import com.example.controlgastoslight.db.model.Grupo;
+import com.example.controlgastoslight.db.model.Meta;
 import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
 
 
-@Database(entities = {Registro.class, Grupo.class, RegistroGrupoCrossRef.class}, version = 2)
+@Database(entities = {Registro.class, Grupo.class, RegistroGrupoCrossRef.class, Meta.class}, version = 2)
 public abstract class DataBase extends RoomDatabase {
     // Singleton patron
     private static DataBase INSTANCE;
@@ -22,6 +24,7 @@ public abstract class DataBase extends RoomDatabase {
     public abstract RegistroDao registroDao();
     public abstract GrupoDao grupoDao();
     public abstract RegistroGrupoCrossRefDao registroGrupoCrossRefDao();
+    public abstract MetaDao metaDao();
 
     public static synchronized DataBase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
