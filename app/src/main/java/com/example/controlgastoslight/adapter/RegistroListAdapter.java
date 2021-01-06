@@ -10,14 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.example.controlgastoslight.R;
 import com.example.controlgastoslight.db.actions.GrupoActions;
@@ -30,13 +28,8 @@ import com.example.controlgastoslight.utils.SingletonMap;
 import com.maltaisn.icondialog.data.Icon;
 import com.maltaisn.icondialog.pack.IconPack;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import static androidx.core.content.res.ResourcesCompat.*;
 
 public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<Registro> list = new ArrayList<>();
@@ -94,7 +87,9 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle(R.string.app_name);
                 Registro r = (Registro) getItem(position);
-                builder.setMessage("Do you want to delete \""+ r.getTitulo() +"\" registry?");
+                String p1 = context.getResources().getString(R.string.borrado_registro) + " \"";
+                String p2 = "\"?";
+                builder.setMessage(p1+ r.getTitulo() + p2);
                 builder.setIcon(R.drawable.ic_delete);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

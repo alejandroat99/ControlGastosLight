@@ -48,4 +48,5 @@
     <string name="no_spend">Don\'t Spend</string>
     <string name="save_money">Save</string>
     <string name="positive_balance">Positive Balance</string>
+    <string name="borrado_registro">Do you want to remove the registry</string>
 </resources>

@@ -43,4 +43,5 @@
     <string name="no_spend">No gastar</string>
     <string name="save_money">Ahorrar</string>
     <string name="positive_balance">Balance Positivo</string>
+    <string name="borrado_registro">"¿Seguro que quieres borrar el registro "</string>
 </resources>
