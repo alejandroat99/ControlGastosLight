@@ -149,7 +149,7 @@ public class    EstadisticasDataFragment extends Fragment {
             String[] x_labels = {getString(R.string.spend), getString(R.string.income)};
             xAxis.setValueFormatter(new IndexAxisValueFormatter(x_labels));
             linear_layout.addView(barchart);
-
+            barchart.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.border));
             barchart.invalidate();
         }else{
             LineChart lineChart = new LineChart(linear_layout.getContext());
@@ -191,7 +191,7 @@ public class    EstadisticasDataFragment extends Fragment {
             YAxis rightYAxis = lineChart.getAxisRight();
             rightYAxis.setEnabled(false);
             linear_layout.addView(lineChart);
-
+            lineChart.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.border));
             lineChart.invalidate();
         }
     }
@@ -225,7 +225,7 @@ public class    EstadisticasDataFragment extends Fragment {
         pieChart.setUsePercentValues(true);
         pieChart.setEntryLabelColor(ContextCompat.getColor(linear_layout.getContext(), R.color.black));
         linear_layout.addView(pieChart);
-
+        pieChart.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.border));
         pieChart.invalidate();
     }
 
@@ -269,7 +269,7 @@ public class    EstadisticasDataFragment extends Fragment {
             YAxis rightYAxis = lineChart.getAxisRight();
             rightYAxis.setEnabled(false);
             linear_layout.addView(lineChart);
-
+            lineChart.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.border));
             lineChart.invalidate();
         }
 
