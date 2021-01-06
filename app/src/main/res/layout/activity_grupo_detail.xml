@@ -25,7 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/panel_color"
+                android:background="@drawable/border"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -61,7 +61,7 @@
                 android:id="@+id/group_barchart_totals"
                 android:layout_width="match_parent"
                 android:layout_height="364dp"
-                android:background="@drawable/panel_color">
+                android:background="@drawable/border">
 
             </com.github.mikephil.charting.charts.BarChart>
 
@@ -78,7 +78,7 @@
                 android:id="@+id/group_piechart_porcentajes"
                 android:layout_width="match_parent"
                 android:layout_height="364dp"
-                android:background="@drawable/panel_color">
+                android:background="@drawable/border">
 
             </com.github.mikephil.charting.charts.PieChart>
 
@@ -95,7 +95,7 @@
                 android:id="@+id/group_month_record"
                 android:layout_width="match_parent"
                 android:layout_height="364dp"
-                android:background="@drawable/panel_color">
+                android:background="@drawable/border">
 
             </com.github.mikephil.charting.charts.LineChart>
 
@@ -112,7 +112,7 @@
                 android:id="@+id/group_linechart_all"
                 android:layout_width="match_parent"
                 android:layout_height="364dp"
-                android:background="@drawable/panel_color" />
+                android:background="@drawable/border" />
 
         </LinearLayout>
     </ScrollView>
