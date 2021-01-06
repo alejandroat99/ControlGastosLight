@@ -12,7 +12,7 @@
     <string name="title">Título</string>
     <string name="enter_title">Escribe aquí el título</string>
     <string name="description">Descripción</string>
-    <string name="save">Guardad</string>
+    <string name="save">Guardar</string>
     <string name="spend">Gasto</string>
     <string name="income">Ingreso</string>
     <string name="balance">Balance</string>
@@ -44,4 +44,5 @@
     <string name="save_money">Ahorrar</string>
     <string name="positive_balance">Balance Positivo</string>
     <string name="borrado_registro">"¿Seguro que quieres borrar el registro "</string>
+    <string name="new_registry">Nuevo Registro</string>
 </resources>

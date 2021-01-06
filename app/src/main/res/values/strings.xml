@@ -49,4 +49,5 @@
     <string name="save_money">Save</string>
     <string name="positive_balance">Positive Balance</string>
     <string name="borrado_registro">Do you want to remove the registry</string>
+    <string name="new_registry">New Registry</string>
 </resources>

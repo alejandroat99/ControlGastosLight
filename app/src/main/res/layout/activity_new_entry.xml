@@ -5,22 +5,72 @@
     android:id="@+id/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/p_background"
     tools:context=".NewEntryActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            app:cardElevation="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/p_background"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tVNewRegistry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:text="@string/new_registry"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cabecera_registro"
+                app:layout_constraintEnd_toEndOf="@+id/cabecera_registro"
+                app:layout_constraintStart_toStartOf="@+id/cabecera_registro"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/cabecera_registro"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:background="@drawable/header_table"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="560dp"
+                android:background="@drawable/border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Spinner
                 android:id="@+id/spinnerMovType"
                 android:layout_width="0dp"
                 android:layout_height="26dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/border_grey"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tVMovType" />
@@ -32,23 +82,23 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/texto_tipoMov"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#14a38b"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/eTDescription" />
 
             <EditText
                 android:id="@+id/formQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="101dp"
                 android:autofillHints="quantity"
+                android:background="@drawable/border_grey"
                 android:ems="10"
                 android:hint="@string/hint_quantity"
                 android:inputType="numberDecimal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/tVQuantity" />
 
             <TextView
@@ -58,18 +108,20 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/texto_cantidad"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#14a38b"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMovType" />
 
             <TextView
                 android:id="@+id/text_group_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="#14a38b"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/cabecera_registro" />
 
             <EditText
                 android:id="@+id/edittext_label"
@@ -77,13 +129,14 @@
                 android:layout_height="47dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="40dp"
                 android:autofillHints="title"
+                android:background="@drawable/border_grey"
                 android:ems="10"
                 android:hint="@string/enter_title"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/text_group_name" />
 
             <TextView
@@ -93,7 +146,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/description"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#14a38b"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/edittext_label" />
 
             <EditText
@@ -102,28 +156,28 @@
                 android:layout_height="69dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="40dp"
                 android:autofillHints="description"
+                android:background="@drawable/border_grey"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/hint_description"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/tVDescripcion" />
 
             <Button
                 android:id="@+id/btn_save_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/save"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerGroup"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerGroup" />
 
             <TextView
                 android:id="@+id/tVGrupo"
@@ -132,7 +186,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="@string/group"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#14a38b"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/formQuantity" />
 
             <Spinner
@@ -142,10 +197,13 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
+                android:background="@drawable/border_grey"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/tVGrupo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
