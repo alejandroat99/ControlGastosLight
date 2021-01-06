@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.controlgastoslight.adapter.HomePageAdapter;
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.viewModels.RegistroViewModel;
+import com.example.controlgastoslight.utils.MyViewPager;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -42,7 +43,7 @@ public class HomeFragment extends Fragment {
 
     // Starts here
     TabLayout tabLayout;
-    ViewPager viewPager;
+    MyViewPager viewPager;
     TabItem tabToday, tabWeek, tabMonth, tabYear;
     ImageButton btnNewEntry;
     TextView tVIncomes, tVExpenses;

@@ -14,7 +14,10 @@
         android:background="@color/p_background"
         android:backgroundTint="@color/p_background">
 
-        <ListView
+        <LinearLayout
+            android:background="@color/p_background"
+            android:backgroundTint="@color/p_background"
+            android:orientation="vertical"
             android:id="@+id/list_registry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

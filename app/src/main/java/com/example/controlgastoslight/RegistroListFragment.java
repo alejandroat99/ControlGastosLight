@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.controlgastoslight.adapter.RegistroListAdapter;
@@ -89,12 +90,16 @@ public class RegistroListFragment extends Fragment {
         registros = registros == null ? new ArrayList<>() : registros;
 
         // Cargando fragment...
-        ListView list = (ListView) view.findViewById(R.id.list_registry);
+        LinearLayout list = (LinearLayout) view.findViewById(R.id.list_registry);
 
         try {
             Log.d("RLFragment", registros.size() + " registros");
             RegistroListAdapter adapter = new RegistroListAdapter((ArrayList) registros, getContext());
-            list.setAdapter(adapter);
+
+            for(int i=0; i<adapter.getCount(); ++i) {
+                View item = adapter.getView(i, null, null);
+                list.addView(item);
+            }
         }catch (Exception e) {
             e.printStackTrace();
         }

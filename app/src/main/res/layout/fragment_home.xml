@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
     android:orientation="vertical"
+    android:background="@color/p_background"
     >
 
     <ScrollView
@@ -98,10 +99,10 @@
                     android:text="@string/barra_año" />
             </com.google.android.material.tabs.TabLayout>
 
-            <androidx.viewpager.widget.ViewPager
+            <com.example.controlgastoslight.utils.MyViewPager
                 android:id="@+id/vPListRegistry"
                 android:layout_width="0dp"
-                android:layout_height="247dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@color/white"
@@ -109,7 +110,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tLPeriodMode">
 
-            </androidx.viewpager.widget.ViewPager>
+            </com.example.controlgastoslight.utils.MyViewPager>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/Balance"
