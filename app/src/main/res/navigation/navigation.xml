@@ -20,4 +20,9 @@
         android:name="com.example.controlgastoslight.EstadisticasFragment"
         android:label="Estadisticas"
         tools:layout="@layout/fragment_estadisticas" />
+    <fragment
+        android:id="@+id/metasFragment"
+        android:name="com.example.controlgastoslight.MetasFragment"
+        android:label="@string/goals"
+        tools:layout="@layout/fragment_metas" />
 </navigation>

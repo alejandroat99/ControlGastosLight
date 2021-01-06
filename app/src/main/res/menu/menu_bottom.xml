@@ -13,4 +13,8 @@
         android:id="@+id/estadisticasFragment"
         android:icon="@drawable/ic_estadisticas"
         android:title="@string/statistics" />
+    <item
+        android:id="@+id/metasFragment"
+        android:icon="@drawable/ic_goals"
+        android:title="@string/goals" />
 </menu>
