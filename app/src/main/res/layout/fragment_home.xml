@@ -36,7 +36,6 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="7dp"
                 android:background="@drawable/ic_add"
                 android:contentDescription="Add a new entry"
                 android:gravity="center_vertical"
@@ -45,8 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vPListRegistry"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/vPListRegistry" />
 
             <TextView
                 android:id="@+id/text_test_registros"
@@ -129,6 +127,7 @@
                 app:layout_constraintTop_toTopOf="parent" >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/balance_table"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -160,7 +159,7 @@
                         android:layout_height="119dp"
                         android:layout_marginEnd="36dp"
                         android:layout_marginBottom="8dp"
-                        android:progress="80"
+                        android:progress="0"
                         android:progressDrawable="@drawable/pg_circle_losses"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -196,7 +195,7 @@
                         android:layout_marginStart="36dp"
                         android:layout_marginBottom="8dp"
                         android:indeterminate="false"
-                        android:progress="80"
+                        android:progress="0"
                         android:progressDrawable="@drawable/pg_circle_income"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -215,7 +214,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tVWelcome"
+                        android:id="@+id/tVNewRegistry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
