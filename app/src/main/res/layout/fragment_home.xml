@@ -24,7 +24,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
-                android:background="@drawable/panel_color"
+                android:background="@drawable/border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPager"
+                app:layout_constraintTop_toBottomOf="@+id/vPListRegistry"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
@@ -56,11 +56,11 @@
                 app:layout_constraintEnd_toStartOf="@+id/btNewEntry"
                 app:layout_constraintHorizontal_bias="0.889"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/viewPager"
+                app:layout_constraintTop_toTopOf="@+id/vPListRegistry"
                 app:layout_constraintVertical_bias="0.932" />
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
+                android:id="@+id/tLPeriodMode"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="10dp"
@@ -99,7 +99,7 @@
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
+                android:id="@+id/vPListRegistry"
                 android:layout_width="0dp"
                 android:layout_height="247dp"
                 android:layout_marginStart="10dp"
@@ -107,62 +107,125 @@
                 android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+                app:layout_constraintTop_toBottomOf="@+id/tLPeriodMode">
 
             </androidx.viewpager.widget.ViewPager>
 
-            <View
+            <androidx.cardview.widget.CardView
                 android:id="@+id/Balance"
+                android:elevation="8dp"
                 android:layout_width="0dp"
                 android:layout_height="210dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="160dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/panel_color"
+                android:background="@drawable/border"
                 android:foregroundGravity="center_vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.533"
+                app:cardElevation="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
 
-            <TextView
-                android:id="@+id/tVWelcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/Balance"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="@+id/Balance"
-                app:layout_constraintTop_toTopOf="@+id/Balance" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tVWelcome3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/Expenses"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/pGLosses"
-                app:layout_constraintStart_toStartOf="@+id/pGLosses"
-                app:layout_constraintTop_toTopOf="@+id/Balance" />
+                    <View
+                        android:id="@+id/borderBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="33dp"
+                        android:background="@drawable/header_table"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tVWelcome2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="@string/Incomes"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/pGIncome"
-                app:layout_constraintStart_toStartOf="@+id/pGIncome"
-                app:layout_constraintTop_toTopOf="@+id/Balance" />
+                    <TextView
+                        android:id="@+id/tVWelcome3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="48dp"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text="@string/Expenses"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="@+id/pGLosses"
+                        app:layout_constraintStart_toStartOf="@+id/pGLosses"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ProgressBar
+                        android:id="@+id/pGLosses"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="135dp"
+                        android:layout_height="119dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginBottom="8dp"
+                        android:progress="80"
+                        android:progressDrawable="@drawable/pg_circle_losses"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tVIncomes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text="TextView"
+                        app:layout_constraintBottom_toBottomOf="@+id/pGIncome"
+                        app:layout_constraintEnd_toEndOf="@+id/pGIncome"
+                        app:layout_constraintHorizontal_bias="0.487"
+                        app:layout_constraintStart_toStartOf="@+id/pGIncome"
+                        app:layout_constraintTop_toTopOf="@+id/pGIncome" />
+
+                    <TextView
+                        android:id="@+id/tVExpenses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text="TextView"
+                        app:layout_constraintBottom_toBottomOf="@+id/pGLosses"
+                        app:layout_constraintEnd_toEndOf="@+id/pGLosses"
+                        app:layout_constraintStart_toStartOf="@+id/pGLosses"
+                        app:layout_constraintTop_toTopOf="@+id/pGLosses" />
+
+                    <ProgressBar
+                        android:id="@+id/pGIncome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="135dp"
+                        android:layout_height="119dp"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginBottom="8dp"
+                        android:indeterminate="false"
+                        android:progress="80"
+                        android:progressDrawable="@drawable/pg_circle_income"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tVGanancias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="48dp"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text="@string/Incomes"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toEndOf="@+id/pGIncome"
+                        app:layout_constraintStart_toStartOf="@+id/pGIncome"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tVWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/helvetica_neue_light"
+                        android:text="@string/Balance"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -174,7 +237,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tVRevenue"
+                    android:id="@+id/tVMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -189,7 +252,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/header"
                     android:layout_width="240dp"
                     android:layout_height="150dp"
                     android:layout_marginStart="173dp"
@@ -200,7 +263,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imagePeople"
                     android:layout_width="258dp"
                     android:layout_height="81dp"
                     android:layout_marginStart="16dp"
@@ -211,52 +274,6 @@
             </FrameLayout>
 
 
-            <ProgressBar
-                android:id="@+id/pGIncome"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="135dp"
-                android:layout_height="119dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginBottom="8dp"
-                android:indeterminate="false"
-                android:progress="80"
-                android:progressDrawable="@drawable/pg_circle_income"
-                app:layout_constraintBottom_toBottomOf="@+id/Balance"
-                app:layout_constraintStart_toStartOf="@+id/Balance" />
-
-            <ProgressBar
-                android:id="@+id/pGLosses"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="135dp"
-                android:layout_height="119dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginBottom="8dp"
-                android:progress="80"
-                android:progressDrawable="@drawable/pg_circle_losses"
-                app:layout_constraintBottom_toBottomOf="@+id/Balance"
-                app:layout_constraintEnd_toEndOf="@+id/Balance" />
-
-            <TextView
-                android:id="@+id/tVIncomes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="52dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/pGIncome"
-                app:layout_constraintEnd_toEndOf="@+id/pGIncome"
-                app:layout_constraintStart_toStartOf="@+id/pGIncome" />
-
-            <TextView
-                android:id="@+id/tVExpenses"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="52dp"
-                android:fontFamily="@font/helvetica_neue_light"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/pGLosses"
-                app:layout_constraintEnd_toEndOf="@+id/pGLosses"
-                app:layout_constraintStart_toStartOf="@+id/pGLosses" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

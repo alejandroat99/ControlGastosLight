@@ -6,18 +6,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.controlgastoslight.adapter.HomePageAdapter;
 import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.viewModels.RegistroViewModel;
 import com.google.android.material.tabs.TabItem;
@@ -97,11 +97,55 @@ public class HomeFragment extends Fragment {
         // Configuring "New Entry" button
         btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
 
+        // Getting View Pager ready
+        HomePageAdapter homePageAdapter = new HomePageAdapter(getChildFragmentManager());
+        viewPager.setAdapter(homePageAdapter);
+
+        configureTLListener();
+        configureVPListener();
+    }
+
+    private void configureVPListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                tabLayout.setScrollPosition(position, positionOffset, true);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private void configureTLListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     private void associateElements(@NonNull View view) {
-        tabLayout = view.findViewById(R.id.tabLayout);
-        viewPager = view.findViewById(R.id.viewPager);
+        tabLayout = view.findViewById(R.id.tLPeriodMode);
+        viewPager = view.findViewById(R.id.vPListRegistry);
         tabToday = view.findViewById(R.id.tabToday);
         tabWeek = view.findViewById(R.id.tabWeek);
         tabMonth = view.findViewById(R.id.tabMonth);
