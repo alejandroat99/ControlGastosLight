@@ -13,6 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.controlgastoslight.db.database.DataBase;
+import com.example.controlgastoslight.db.model.Meta;
+import com.example.controlgastoslight.utils.SingletonMap;
+
+import java.util.Calendar;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MetasFragment#newInstance} factory method to
@@ -77,5 +84,15 @@ public class MetasFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        DataBase db = (DataBase) SingletonMap.getSingletonMap("db");
+        int dia = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+        int semana = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+        int mes = Calendar.getInstance().get(Calendar.MONTH);
+        int year = Calendar.getInstance().get(Calendar.MONTH);
+
+        List<Meta> metas_diarias = db.metaDao().getMetasDiarias(dia, year);
+        List<Meta> metas_semanales = db.metaDao().getMetasSemanales(semana, year);
+        List<Meta> metas_mensuales = db.metaDao().getMetasMensuales(mes, year);
+        List<Meta> metas_anuales = db.metaDao().getMetasAnuales(year);
     }
 }
