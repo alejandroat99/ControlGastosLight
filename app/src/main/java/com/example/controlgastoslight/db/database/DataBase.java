@@ -16,7 +16,7 @@ import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.db.model.RegistroGrupoCrossRef;
 
 
-@Database(entities = {Registro.class, Grupo.class, RegistroGrupoCrossRef.class, Meta.class}, version = 2)
+@Database(entities = {Registro.class, Grupo.class, RegistroGrupoCrossRef.class, Meta.class}, version = 3)
 public abstract class DataBase extends RoomDatabase {
     // Singleton patron
     private static DataBase INSTANCE;
