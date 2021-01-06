@@ -137,8 +137,8 @@ public class    EstadisticasDataFragment extends Fragment {
 
             BarDataSet barDataSet = new BarDataSet(barEntries, "");
             barDataSet.setColors(
-                    ContextCompat.getColor(linear_layout.getContext(), R.color.gasto),
-                    ContextCompat.getColor(linear_layout.getContext(), R.color.ingreso)
+                    ContextCompat.getColor(linear_layout.getContext(), R.color.p_rojo),
+                    ContextCompat.getColor(linear_layout.getContext(), R.color.verde_money)
             );
             BarData barData = new BarData(barDataSet);
             barchart.setData(barData);
@@ -170,12 +170,12 @@ public class    EstadisticasDataFragment extends Fragment {
             }
 
             LineDataSet dataSet_gasto = new LineDataSet(entries_gasto, "");
-            dataSet_gasto.setCircleColor(ContextCompat.getColor(linear_layout.getContext(), R.color.gasto));
-            dataSet_gasto.setColor(ContextCompat.getColor(linear_layout.getContext(), R.color.gasto));
+            dataSet_gasto.setCircleColor(ContextCompat.getColor(linear_layout.getContext(), R.color.p_rojo));
+            dataSet_gasto.setColor(ContextCompat.getColor(linear_layout.getContext(), R.color.p_rojo));
 
             LineDataSet dataSet_ingreso = new LineDataSet(entries_ingreso, "");
-            dataSet_ingreso.setColor(ContextCompat.getColor(linear_layout.getContext(), R.color.ingreso));
-            dataSet_ingreso.setCircleColor(ContextCompat.getColor(linear_layout.getContext(), R.color.ingreso));
+            dataSet_ingreso.setColor(ContextCompat.getColor(linear_layout.getContext(), R.color.verde_money));
+            dataSet_ingreso.setCircleColor(ContextCompat.getColor(linear_layout.getContext(), R.color.verde_money));
 
             LineData lineData = new LineData();
             lineData.addDataSet(dataSet_gasto);
@@ -215,8 +215,8 @@ public class    EstadisticasDataFragment extends Fragment {
 
         PieDataSet pieDataSet = new PieDataSet(pieEntries, "");
         pieDataSet.setColors(
-                ContextCompat.getColor(linear_layout.getContext(), R.color.gasto),
-                ContextCompat.getColor(linear_layout.getContext(), R.color.ingreso)
+                ContextCompat.getColor(linear_layout.getContext(), R.color.p_rojo),
+                ContextCompat.getColor(linear_layout.getContext(), R.color.verde_money)
         );
 
         PieData pieData = new PieData(pieDataSet);

@@ -10,6 +10,7 @@
     <color name="gasto">#F34E4E</color>
     <color name="ingreso">#72DF4B</color>
     <color name="balance">#DF904B</color>
+    <color name="verde_money">#74c686</color>
 
     <!-- Colores principales -->
     <color name="p_background">#EBF4F8</color>
@@ -18,5 +19,4 @@
     <color name="p_amarilloVerdoso">#d6cf6e</color>
     <color name="p_negro">#2c2738</color>
     <color name="p_rojo">#FF7171</color>
-
 </resources>
