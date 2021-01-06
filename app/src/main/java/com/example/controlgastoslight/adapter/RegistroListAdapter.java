@@ -1,6 +1,8 @@
 package com.example.controlgastoslight.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -8,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.example.controlgastoslight.R;
 import com.example.controlgastoslight.db.actions.GrupoActions;
+import com.example.controlgastoslight.db.actions.RegistroActions;
 import com.example.controlgastoslight.db.actions.RegistroGrupoCrossRefActions;
 import com.example.controlgastoslight.db.model.Grupo;
 import com.example.controlgastoslight.db.model.Registro;
@@ -79,6 +84,45 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
         tVQuantity.setText(String.format("%.2f€", register.getValue()));
 
         // Image
+        setImage(itemView, register);
+
+        // Delete button
+        ImageButton deleteButton = itemView.findViewById(R.id.btn_delete_registry);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle(R.string.app_name);
+                Registro r = (Registro) getItem(position);
+                builder.setMessage("Do you want to delete \""+ r.getTitulo() +"\" registry?");
+                builder.setIcon(R.drawable.ic_delete);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        RegistroActions ra = new RegistroActions(context);
+                        try {
+                            ra.delete(r.getRegistroId());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        list.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
+
+        return itemView;
+    }
+
+    private void setImage(View itemView, Registro register) {
         ImageView viewIcon = itemView.findViewById(R.id.icon_view_registry);
 
         // Getting group...
@@ -103,15 +147,10 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                     }
 
                     viewIcon.setBackground(icono_image);
-                } else {
-                    viewIcon.setBackground(getDrawable(context.getResources(), R.drawable.ic_launcher, null));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
-
-        return itemView;
     }
 }

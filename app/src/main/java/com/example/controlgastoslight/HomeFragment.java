@@ -49,6 +49,8 @@ public class HomeFragment extends Fragment {
     RegistroViewModel registroViewModel;
     ProgressBar pGIncome, pGExpenses;
 
+    HomePageAdapter homePageAdapter;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -98,7 +100,7 @@ public class HomeFragment extends Fragment {
         btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
 
         // Getting View Pager ready
-        HomePageAdapter homePageAdapter = new HomePageAdapter(getChildFragmentManager());
+        homePageAdapter = new HomePageAdapter(getChildFragmentManager());
         viewPager.setAdapter(homePageAdapter);
 
         configureTLListener();
@@ -189,6 +191,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        viewPager.setAdapter(homePageAdapter);
         refresh(getView());
     }
 }

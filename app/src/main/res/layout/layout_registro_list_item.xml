@@ -24,15 +24,13 @@
         android:id="@+id/title_registry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="15dp"
         android:text="Grupo Label"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/quantity_registry"
-        app:layout_constraintEnd_toStartOf="@+id/btn_info"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toEndOf="@+id/icon_view"
-        app:layout_constraintTop_toTopOf="@+id/quantity_registry"
-        app:layout_constraintVertical_bias="0.466" />
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <ImageView
         android:id="@+id/icon_view_registry"
@@ -46,15 +44,15 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageButton
-        android:id="@+id/btn_delete"
+        android:id="@+id/btn_delete_registry"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:background="#FFFFFF"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_info"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_info"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_delete" />
 
     <ImageButton
@@ -63,23 +61,24 @@
         android:layout_height="40dp"
         android:background="#FFFFFF"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/title_registry"
-        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete_registry"
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title_registry"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_detail" />
 
     <TextView
+        android:textColor="@color/p_verde"
+        android:fontFamily="@font/helvetica_neue_light"
         android:id="@+id/quantity_registry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:fontFamily="@font/helvetica_neue_light"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="5dp"
         android:text="Cantidad"
-        android:textColor="@color/p_verde"
-        app:layout_constraintBottom_toBottomOf="@+id/icon_view_registry"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/icon_view_registry" />
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/title_registry"
+        app:layout_constraintTop_toBottomOf="@+id/title_registry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
