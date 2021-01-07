@@ -7,6 +7,15 @@
     tools:context=".NewGroupActivity"
     android:background="@color/p_background">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo_cool"
+        android:foregroundTint="@color/black"
+        android:elevation="0dp">
+
+    </FrameLayout>
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

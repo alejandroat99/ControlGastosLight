@@ -5,8 +5,16 @@
     android:id="@+id/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/super_fondo"
+    android:background="@color/p_background"
     tools:context=".NewEntryActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo_cool"
+        android:foregroundTint="@color/black"
+        android:elevation="0dp">
+    </FrameLayout>
 
     <ScrollView
         android:layout_width="match_parent"
