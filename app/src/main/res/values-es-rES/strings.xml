@@ -50,4 +50,6 @@
     <string name="positive_balance">Balance Positivo</string>
     <string name="borrado_registro">"¿Seguro que quieres borrar el registro "</string>
     <string name="new_registry">Nuevo Registro</string>
+    <string name="new_goal">Nueva Meta</string>
+    <string name="new_group">Nuevo Grupo</string>
 </resources>

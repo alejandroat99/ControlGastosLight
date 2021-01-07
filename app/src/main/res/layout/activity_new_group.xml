@@ -30,12 +30,12 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tVNewGroup"
+                    android:id="@+id/tVNewGoal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:elevation="2dp"
                     android:fontFamily="@font/helvetica_neue_light"
-                    android:text="@string/new_registry"
+                    android:text="@string/new_group"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/cabecera_grupo"
@@ -79,7 +79,7 @@
                 <EditText
                     android:id="@+id/edittext_label"
                     android:layout_width="0dp"
-                    android:layout_height="47dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="40dp"
