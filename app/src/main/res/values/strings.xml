@@ -53,4 +53,7 @@
     <string name="new_goal">New Goal</string>
     <string name="new_group">New Group</string>
     <string name="editar_registro">Edit Registry</string>
+    <string name="borrado_grupo">Do you want to remove the group</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

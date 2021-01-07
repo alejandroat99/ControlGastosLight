@@ -84,22 +84,19 @@ public class GrupoListAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle(R.string.app_name);
-                builder.setMessage("Do you want to delete \""+ getItem(position).getLabel() +"\" group?");
+                builder.setMessage(v.getContext().getString(R.string.borrado_grupo) +"\""+ getItem(position).getLabel() +"\"?");
                 builder.setIcon(R.drawable.ic_delete);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(v.getContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         GrupoActions ga = new GrupoActions(context);
-                        System.out.println("Se ha pulsado el objeto:" + position);
-                        System.out.println("Grupo ID: " + getItemId(position));
-                        System.out.println("Grupo: " + getItem(position));
                         ga.delete(getItem(position));
                         list.remove(position);
                         notifyDataSetChanged();
                     }
                 });
 
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(v.getContext().getString(R.string.no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
