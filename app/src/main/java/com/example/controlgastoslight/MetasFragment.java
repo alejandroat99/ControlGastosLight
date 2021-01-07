@@ -1,5 +1,6 @@
 package com.example.controlgastoslight;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,11 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
+import com.example.controlgastoslight.adapter.MetaListAdapter;
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Meta;
 import com.example.controlgastoslight.utils.SingletonMap;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -74,6 +79,7 @@ public class MetasFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_metas, container, false);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ImageButton btn_add = (ImageButton) view.findViewById(R.id.btn_add_goal);
@@ -84,15 +90,59 @@ public class MetasFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        refresh(view);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh(getView());
+    }
+
+    private void refresh(@NonNull View view) {
         DataBase db = (DataBase) SingletonMap.getSingletonMap("db");
         int dia = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
         int semana = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
         int mes = Calendar.getInstance().get(Calendar.MONTH);
-        int year = Calendar.getInstance().get(Calendar.MONTH);
+        int year = Calendar.getInstance().get(Calendar.YEAR);
 
-        List<Meta> metas_diarias = db.metaDao().getMetasDiarias(dia, year);
-        List<Meta> metas_semanales = db.metaDao().getMetasSemanales(semana, year);
-        List<Meta> metas_mensuales = db.metaDao().getMetasMensuales(mes, year);
-        List<Meta> metas_anuales = db.metaDao().getMetasAnuales(year);
+        ArrayList<Meta> metas_diarias = new ArrayList<>(db.metaDao().getMetasDiarias(dia, year));
+        ArrayList<Meta> metas_semanales = new ArrayList<>(db.metaDao().getMetasSemanales(semana, year));
+        ArrayList<Meta> metas_mensuales = new ArrayList<>(db.metaDao().getMetasMensuales(mes, year));
+        ArrayList<Meta> metas_anuales = new ArrayList<>(db.metaDao().getMetasAnuales(year));
+
+        // Cargar la list view de metas diarias
+        LinearLayout list_diario = (LinearLayout) view.findViewById(R.id.list_diario);
+        list_diario.removeAllViews();
+        MetaListAdapter adapter_diario = new MetaListAdapter(metas_diarias, view.getContext());
+        for(int i = 0; i < metas_diarias.size(); i++){
+            list_diario.addView(adapter_diario.getView(i, null, null));
+        }
+
+
+        // Cargar la list view de metas semanales
+        LinearLayout list_semanal = (LinearLayout) view.findViewById(R.id.list_semanal);
+        list_semanal.removeAllViews();
+        MetaListAdapter adapter_semanal = new MetaListAdapter(metas_semanales, view.getContext());
+        for (int i = 0; i < metas_semanales.size(); i++){
+            list_semanal.addView(adapter_semanal.getView(i, null, null));
+        }
+
+        // Cargar la list view de metas mensuales
+        LinearLayout list_mensual = (LinearLayout) view.findViewById(R.id.list_mensual);
+        list_mensual.removeAllViews();
+        MetaListAdapter adapter_mensual = new MetaListAdapter(metas_mensuales, view.getContext());
+        for(int i = 0; i < metas_mensuales.size(); i++){
+            list_mensual.addView(adapter_mensual.getView(i, null, null));
+        }
+
+        // Cargar la list view de metas anuales
+        LinearLayout list_anual = (LinearLayout) view.findViewById(R.id.list_anual);
+        list_anual.removeAllViews();
+        MetaListAdapter adapter_anual = new MetaListAdapter(metas_anuales, view.getContext());
+        for (int i = 0; i < metas_anuales.size(); i++){
+            list_anual.addView(adapter_anual.getView(i, null, null));
+        }
     }
 }
