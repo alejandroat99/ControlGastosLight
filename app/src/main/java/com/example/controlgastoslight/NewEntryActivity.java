@@ -8,8 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.controlgastoslight.db.actions.GrupoActions;
 import com.example.controlgastoslight.db.actions.RegistroActions;
+import com.example.controlgastoslight.db.actions.RegistroGrupoCrossRefActions;
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
 import com.example.controlgastoslight.db.model.Registro;
@@ -27,6 +30,10 @@ public class NewEntryActivity extends AppCompatActivity {
     EditText eTTitle, eTDescription, eTQuantity;
     Button btnSave;
 
+    Bundle bundle;
+
+    int idRegistry;
+    int idGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,69 @@ public class NewEntryActivity extends AppCompatActivity {
         ArrayAdapter spinnerGroupAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, groups);
         spinnerGroupAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGroup.setAdapter(spinnerGroupAdapter);
+
+        // Getting Bundle
+        bundle = getIntent().getExtras();
+
+        idRegistry = -1;
+        idGroup = -1;
+
+        // Check if we are editing
+        if(bundle.getBoolean("edit")) {
+            // Change header
+            TextView tVHeader = findViewById(R.id.tVNewRegistro);
+            tVHeader.setText(getResources().getString(R.string.editar_registro));
+
+            // Filling data
+            fillData(spinnerGroupAdapter);
+        }
+
+    }
+
+    private void fillData(ArrayAdapter spinnerGroupAdapter) {
+        RegistroActions rA = new RegistroActions(this);
+        GrupoActions gA = new GrupoActions(this);
+        RegistroGrupoCrossRefActions refActions = new RegistroGrupoCrossRefActions(this);
+
+        // Defining global variable
+        idRegistry = bundle.getInt("regId");
+        try {
+            // Get registry
+            Registro reg = rA.getRegistro(bundle.getInt("regId"));
+
+            // Get relation
+            RegistroGrupoCrossRef rg = null;
+            List<RegistroGrupoCrossRef> l = refActions.getRelacionByRegistro(reg.getRegistroId());
+
+            if(l != null && l.size()>0) { // Is relationed
+                rg = l.get(0);
+            }
+
+            // Get Group
+            Grupo grp = null;
+            if(rg != null) {
+                idGroup = rg.getGrupoId();
+                grp = gA.getGrupo(idGroup);
+            }
+            // Basics
+            eTTitle.setText(reg.getTitulo());
+            eTDescription.setText(reg.getDescripcion());
+            eTQuantity.setText(Double.toString(reg.getValue()));
+
+            // Movement type spinner
+            int pos_movType = reg.isGasto() ? 1 : 0;
+            spinnerMovType.setSelection(pos_movType);
+
+            // Group spinner
+            int pos_grupo = 0;
+
+            if(grp != null) {
+                pos_grupo = spinnerGroupAdapter.getPosition(grp);
+            }
+            spinnerGroup.setSelection(pos_grupo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void saveChanges() {
@@ -76,25 +146,54 @@ public class NewEntryActivity extends AppCompatActivity {
 
         groupSelected = (Grupo) spinnerGroup.getSelectedItem();
 
+        // Getting data
         title = eTTitle.getText().toString();
         description = eTDescription.getText().toString();
         quantity = Float.parseFloat(eTQuantity.getText().toString());
         movType = spinnerMovType.getSelectedItemPosition() != 0;
 
-
+        // Creating models
         Registro registry = new Registro();
+        RegistroGrupoCrossRef rel = new RegistroGrupoCrossRef();
+
+        // Fill registry
+        if(idRegistry!= -1) { // Editing existing Registry
+            registry.setRegistroId(idRegistry);
+        }
         registry.setTitulo(title);
         registry.setDescripcion(description);
         registry.setGasto(movType);
         registry.setValue(quantity);
         registry.setFecha(Utils.getDate());
-        registryId = DataBase.getInMemoryDatabase(this).registroDao().addRegistro(registry);
-        System.out.println("Regstro Id: " + registryId);
+
+        // Persist
+        if(idRegistry != -1) {// Modification
+            DataBase.getInMemoryDatabase(this).registroDao().updateRegistro(registry);
+        } else { // Modification
+            idRegistry = (int) DataBase.getInMemoryDatabase(this).registroDao().addRegistro(registry);
+        }
+
+        // Fill relation
+        rel.setRegistroId(idRegistry);
+
+        if(idGroup != -1) { // Editing existing relation
+            rel.setGrupoId(idGroup);
+        }
+
         if(groupSelected.getGrupoId() != -1) { // Group selected
-            RegistroGrupoCrossRef relacion = new RegistroGrupoCrossRef();
-            relacion.setGrupoId(groupSelected.getGrupoId());
-            relacion.setRegistroId((int) registryId);
-            DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().insert(relacion);
+            // Persist
+            if(idGroup != -1) {// Modification
+                // Es tarde y no me quiero poner con el update del CrossRef, así que borro y vuelvo a insertar
+                DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().delete(rel);
+                rel.setGrupoId(groupSelected.getGrupoId());
+                DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().insert(rel);
+            } else {// Creation
+                rel.setGrupoId(groupSelected.getGrupoId());
+                DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().insert(rel);
+            }
+        } else if(idGroup != -1) {// Delete existing relation
+            // Persist delete
+            DataBase.getInMemoryDatabase(this).registroGrupoCrossRefDao().delete(rel);
         }
 
         finish();

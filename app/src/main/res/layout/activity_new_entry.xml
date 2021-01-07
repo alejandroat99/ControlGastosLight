@@ -27,14 +27,14 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tVNewGoal"
+                android:id="@+id/tVNewRegistro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
                 android:fontFamily="@font/helvetica_neue_light"
                 android:text="@string/new_registry"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/cabecera_registro"
                 app:layout_constraintEnd_toEndOf="@+id/cabecera_registro"
                 app:layout_constraintStart_toStartOf="@+id/cabecera_registro"

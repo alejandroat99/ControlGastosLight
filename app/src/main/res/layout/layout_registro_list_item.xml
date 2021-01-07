@@ -55,10 +55,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_delete" />
+        app:srcCompat="@drawable/ic_delete_v2" />
 
     <ImageButton
-        android:id="@+id/btn_info"
+        android:id="@+id/btn_info_registry"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="#FFFFFF"
@@ -68,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_detail" />
+        app:srcCompat="@drawable/ic_edit" />
 
     <TextView
         android:id="@+id/quantity_registry"

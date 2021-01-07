@@ -3,8 +3,10 @@ package com.example.controlgastoslight.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.example.controlgastoslight.NewEntryActivity;
 import com.example.controlgastoslight.R;
 import com.example.controlgastoslight.db.actions.GrupoActions;
 import com.example.controlgastoslight.db.actions.RegistroActions;
@@ -57,7 +60,7 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d("RLAdapt", "gogo");
+        // Basic data
         View itemView = convertView;
         Registro register = list.get(position);
 
@@ -79,7 +82,34 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
         // Image
         setImage(itemView, register);
 
-        // Delete button
+        // Build Delete button
+        buildDeleteButton(position, itemView);
+
+        // Build Edit button
+        ImageButton editBtn = itemView.findViewById(R.id.btn_info_registry);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Bundle
+                Bundle data = new Bundle();
+
+                // We are editing
+                data.putBoolean("edit", true);
+                data.putInt("regId", register.getRegistroId());
+
+                // Creating indent
+                Intent intent = new Intent(context, NewEntryActivity.class);
+                intent.putExtras(data);
+
+                // Go
+                context.startActivity(intent);
+            }
+        });
+
+        return itemView;
+    }
+
+    private void buildDeleteButton(int position, View itemView) {
         ImageButton deleteButton = itemView.findViewById(R.id.btn_delete_registry);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +143,6 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                 builder.show();
             }
         });
-
-        return itemView;
     }
 
     private void setImage(View itemView, Registro register) {

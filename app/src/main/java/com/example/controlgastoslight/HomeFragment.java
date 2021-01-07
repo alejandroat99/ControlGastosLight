@@ -99,7 +99,21 @@ public class HomeFragment extends Fragment {
         refresh(view);
 
         // Configuring "New Entry" button
-        btnNewEntry.setOnClickListener(v -> startActivity(new Intent(getContext(), NewEntryActivity.class)));
+        btnNewEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Creating bundle
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("edit", false);
+
+                // Creating indent
+                Intent intent = new Intent(getContext(), NewEntryActivity.class);
+                intent.putExtras(bundle);
+
+                // Go
+                getContext().startActivity(intent);
+            }
+        });
 
         // Getting View Pager ready
         homePageAdapter = new HomePageAdapter(getChildFragmentManager());
@@ -206,9 +220,5 @@ public class HomeFragment extends Fragment {
         super.onResume();
         viewPager.setAdapter(homePageAdapter);
         refresh(getView());
-
-        double[] balance = registroViewModel.getBalance();
-        double total = balance[0] + balance[1];
-        makeAnimations(balance, total);
     }
 }

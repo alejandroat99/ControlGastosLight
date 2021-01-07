@@ -47,4 +47,5 @@
     <string name="new_registry">Nuevo Registro</string>
     <string name="new_goal">Nueva Meta</string>
     <string name="new_group">Nuevo Grupo</string>
+    <string name="editar_registro">Editar Registro</string>
 </resources>

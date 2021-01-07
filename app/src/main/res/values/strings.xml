@@ -52,4 +52,5 @@
     <string name="new_registry">New Registry</string>
     <string name="new_goal">New Goal</string>
     <string name="new_group">New Group</string>
+    <string name="editar_registro">Edit Registry</string>
 </resources>
