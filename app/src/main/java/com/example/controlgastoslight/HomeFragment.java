@@ -177,13 +177,11 @@ public class HomeFragment extends Fragment {
         // W/ Animations
         makeAnimations(balance, total);
 
-        /*pGIncome.setProgress(( (int) ((balance[0]/total) * 100)));
-        pGExpenses.setProgress(( (int) ((balance[1]/total) * 100)));
-        // Angle...
-        pGIncome.setRotation(180);
-        pGExpenses.setRotation((float) (360*balance[0]/total)+180);*/
-
         // Register number
+        registerNumber(view);
+    }
+
+    private void registerNumber(View view) {
         TextView text_test_registros = (TextView) view.findViewById(R.id.text_test_registros);
         RegistroActions ra = new RegistroActions(view.getContext());
         try {
