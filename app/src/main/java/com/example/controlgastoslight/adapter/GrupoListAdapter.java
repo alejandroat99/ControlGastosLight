@@ -75,6 +75,8 @@ public class GrupoListAdapter extends BaseAdapter implements ListAdapter {
             }
             icon_view.setBackground(icon_image);
 
+        }else {
+            icon_view.setBackground(view.getContext().getDrawable(R.drawable.ic_launcher));
         }
 
 
