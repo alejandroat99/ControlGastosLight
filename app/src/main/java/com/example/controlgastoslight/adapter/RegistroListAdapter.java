@@ -120,7 +120,7 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                 String p1 = context.getResources().getString(R.string.borrado_registro) + " \"";
                 String p2 = "\"?";
                 builder.setMessage(p1+ r.getTitulo() + p2);
-                builder.setIcon(R.drawable.ic_delete);
+                builder.setIcon(R.drawable.ic_delete_v2);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

@@ -85,7 +85,7 @@ public class GrupoListAdapter extends BaseAdapter implements ListAdapter {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle(R.string.app_name);
                 builder.setMessage(v.getContext().getString(R.string.borrado_grupo) +"\""+ getItem(position).getLabel() +"\"?");
-                builder.setIcon(R.drawable.ic_delete);
+                builder.setIcon(R.drawable.ic_delete_v2);
                 builder.setPositiveButton(v.getContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
