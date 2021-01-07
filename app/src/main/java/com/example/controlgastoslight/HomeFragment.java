@@ -175,10 +175,7 @@ public class HomeFragment extends Fragment {
         tVExpenses.setText(String.format("%.2f€", balance[1]));
 
         // W/ Animations
-        ProgressBarAnimation pGAIncomes = new ProgressBarAnimation(pGIncome, 1200);
-        ProgressBarAnimation pGAExpenses = new ProgressBarAnimation(pGExpenses, 1200);
-        pGAIncomes.setProgressAndRotation(( (int) ((balance[0]/total) * 100)),180);
-        pGAExpenses.setProgressAndRotation(( (int) ((balance[1]/total) * 100)),(float) (360*balance[0]/total)+180);
+        makeAnimations(balance, total);
 
         /*pGIncome.setProgress(( (int) ((balance[0]/total) * 100)));
         pGExpenses.setProgress(( (int) ((balance[1]/total) * 100)));
@@ -199,10 +196,21 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void makeAnimations(double[] balance, double total) {
+        ProgressBarAnimation pGAIncomes = new ProgressBarAnimation(pGIncome, 1200);
+        ProgressBarAnimation pGAExpenses = new ProgressBarAnimation(pGExpenses, 1200);
+        pGAIncomes.setProgressAndRotation(( (int) ((balance[0]/total) * 100)),180);
+        pGAExpenses.setProgressAndRotation(( (int) ((balance[1]/total) * 100)),(float) (360*balance[0]/total)+180);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         viewPager.setAdapter(homePageAdapter);
         refresh(getView());
+
+        double[] balance = registroViewModel.getBalance();
+        double total = balance[0] + balance[1];
+        makeAnimations(balance, total);
     }
 }
