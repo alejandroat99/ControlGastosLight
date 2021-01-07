@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spends Control</string>
+    <string name="app_name">Centimapp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="barra_mes">Month</string>
@@ -56,4 +56,5 @@
     <string name="borrado_grupo">Do you want to remove the group</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="slogan">Each cent counts!</string>
 </resources>

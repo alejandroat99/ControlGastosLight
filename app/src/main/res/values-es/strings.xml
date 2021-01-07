@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Control Gastos</string>
+    <string name="app_name">Centimapp</string>
     <string name="hello_blank_fragment">Hola Fragmento Vacío</string>
     <string name="barra_mes">Mes</string>
     <string name="barra_año">Año</string>
@@ -20,7 +20,7 @@
     <string name="hint_description">Escribe una breve descripción</string>
     <string name="group">Grupo</string>
     <string name="hint_quantity">Cantidad (€)</string>
-    <string name="Welcome">Home</string>
+    <string name="Welcome">Principal</string>
     <string name="Balance">Su balance</string>
     <string name="Incomes">Ganancias</string>
     <string name="Expenses">Gastos</string>
@@ -51,4 +51,5 @@
     <string name="borrado_grupo">"¿Seguro que quieres borrar el grupo "</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
+    <string name="slogan">¡Cada centimo cuenta!</string>
 </resources>
