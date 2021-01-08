@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
         makeAnimations(balance, total);
 
         // Register number
-        registerNumber(view);
+        //registerNumber(view);
     }
 
     private void registerNumber(View view) {
