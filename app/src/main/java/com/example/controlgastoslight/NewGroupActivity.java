@@ -3,6 +3,8 @@ package com.example.controlgastoslight;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.util.StringUtil;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.controlgastoslight.db.database.DataBase;
 import com.example.controlgastoslight.db.model.Grupo;
@@ -95,8 +98,22 @@ public class NewGroupActivity extends AppCompatActivity implements  IconDialog.C
             }
             DataBase db = (DataBase) SingletonMap.getSingletonMap("db");
             long id = db.grupoDao().addGrupo(grupo);
-            System.out.println("Grupo guardado con ID: " + id);
+            Toast.makeText(v.getContext(), v.getContext().getString(R.string.group_created), Toast.LENGTH_SHORT).show();
             finish();
+        }else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+            builder.setTitle(v.getContext().getString(R.string.error));
+            builder.setMessage("Es necesario introducir un título");
+            builder.setIcon(R.drawable.ic_error);
+            builder.setPositiveButton(v.getContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
         }
     }
 
