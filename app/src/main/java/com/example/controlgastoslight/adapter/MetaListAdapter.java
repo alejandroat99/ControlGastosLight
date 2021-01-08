@@ -18,6 +18,7 @@ import com.example.controlgastoslight.db.model.Registro;
 import com.example.controlgastoslight.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,16 @@ public class MetaListAdapter extends BaseAdapter implements ListAdapter {
         progressBar.setMax(100);
         TextView text_progress = (TextView) view.findViewById(R.id.text_progress);
         TextView text_tipo_meta = (TextView) view.findViewById(R.id.text_tipo_meta);
-        Map<Boolean, List<Registro>> tipos = Utils.groupByType(registros);
+
+        Map<Boolean, List<Registro>> tipos;
+        if(registros != null && !registros.isEmpty()) {
+            tipos = Utils.groupByType(registros);
+        }else{
+            tipos = new HashMap<>();
+            tipos.put(true, new ArrayList<>());
+            tipos.put(false, new ArrayList<>());
+        }
+
         float progress;
         switch (type){
             case 0: // No gastar mas de x€

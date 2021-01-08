@@ -113,36 +113,43 @@ public class MetasFragment extends Fragment {
         ArrayList<Meta> metas_anuales = new ArrayList<>(db.metaDao().getMetasAnuales(year));
 
         // Cargar la list view de metas diarias
-        LinearLayout list_diario = (LinearLayout) view.findViewById(R.id.list_diario);
-        list_diario.removeAllViews();
-        MetaListAdapter adapter_diario = new MetaListAdapter(metas_diarias, view.getContext());
-        for(int i = 0; i < metas_diarias.size(); i++){
-            list_diario.addView(adapter_diario.getView(i, null, null));
+        if(metas_diarias != null && !metas_diarias.isEmpty()) {
+            LinearLayout list_diario = (LinearLayout) view.findViewById(R.id.list_diario);
+            list_diario.removeAllViews();
+            MetaListAdapter adapter_diario = new MetaListAdapter(metas_diarias, view.getContext());
+            for (int i = 0; i < metas_diarias.size(); i++) {
+                list_diario.addView(adapter_diario.getView(i, null, null));
+            }
         }
 
-
         // Cargar la list view de metas semanales
-        LinearLayout list_semanal = (LinearLayout) view.findViewById(R.id.list_semanal);
-        list_semanal.removeAllViews();
-        MetaListAdapter adapter_semanal = new MetaListAdapter(metas_semanales, view.getContext());
-        for (int i = 0; i < metas_semanales.size(); i++){
-            list_semanal.addView(adapter_semanal.getView(i, null, null));
+        if(metas_semanales != null && !metas_semanales.isEmpty()) {
+            LinearLayout list_semanal = (LinearLayout) view.findViewById(R.id.list_semanal);
+            list_semanal.removeAllViews();
+            MetaListAdapter adapter_semanal = new MetaListAdapter(metas_semanales, view.getContext());
+            for (int i = 0; i < metas_semanales.size(); i++) {
+                list_semanal.addView(adapter_semanal.getView(i, null, null));
+            }
         }
 
         // Cargar la list view de metas mensuales
-        LinearLayout list_mensual = (LinearLayout) view.findViewById(R.id.list_mensual);
-        list_mensual.removeAllViews();
-        MetaListAdapter adapter_mensual = new MetaListAdapter(metas_mensuales, view.getContext());
-        for(int i = 0; i < metas_mensuales.size(); i++){
-            list_mensual.addView(adapter_mensual.getView(i, null, null));
+        if(metas_mensuales != null && !metas_mensuales.isEmpty()) {
+            LinearLayout list_mensual = (LinearLayout) view.findViewById(R.id.list_mensual);
+            list_mensual.removeAllViews();
+            MetaListAdapter adapter_mensual = new MetaListAdapter(metas_mensuales, view.getContext());
+            for (int i = 0; i < metas_mensuales.size(); i++) {
+                list_mensual.addView(adapter_mensual.getView(i, null, null));
+            }
         }
 
         // Cargar la list view de metas anuales
-        LinearLayout list_anual = (LinearLayout) view.findViewById(R.id.list_anual);
-        list_anual.removeAllViews();
-        MetaListAdapter adapter_anual = new MetaListAdapter(metas_anuales, view.getContext());
-        for (int i = 0; i < metas_anuales.size(); i++){
-            list_anual.addView(adapter_anual.getView(i, null, null));
+        if(metas_anuales != null && !metas_anuales.isEmpty()) {
+            LinearLayout list_anual = (LinearLayout) view.findViewById(R.id.list_anual);
+            list_anual.removeAllViews();
+            MetaListAdapter adapter_anual = new MetaListAdapter(metas_anuales, view.getContext());
+            for (int i = 0; i < metas_anuales.size(); i++) {
+                list_anual.addView(adapter_anual.getView(i, null, null));
+            }
         }
     }
 }
