@@ -53,7 +53,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
         // Configuring save button
         btnSave = findViewById(R.id.btn_save_group);
-        btnSave.setOnClickListener(v -> saveChanges());
+        btnSave.setOnClickListener(v -> clicked());
 
         // Configuring RegistroActions
         rA = new RegistroActions(this.getBaseContext());
@@ -135,6 +135,16 @@ public class NewEntryActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void clicked() {
+        if(correct()) {
+            saveChanges();
+        }
+    }
+
+    private boolean correct() {
+        return !(eTTitle.getText().length() <= 0) && !(eTQuantity.getText().length() <= 0) && !(eTDescription.length() <= 0);
     }
 
     private void saveChanges() {
