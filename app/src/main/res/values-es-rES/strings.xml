@@ -59,4 +59,7 @@
     <string name="slogan">¡Cada centimo cuenta!</string>
     <string name="error">Error</string>
     <string name="group_created">Grupo creado</string>
+    <string name="goal_created">Meta creada</string>
+    <string name="error_cantidad_meta">Se necesita una cantidad para esta meta</string>
+    <string name="error_label_grupo">Se necesita un título para crear un grupo</string>
 </resources>

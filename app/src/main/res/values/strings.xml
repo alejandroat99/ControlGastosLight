@@ -59,4 +59,7 @@
     <string name="slogan">Each cent counts!</string>
     <string name="error">Error</string>
     <string name="group_created">Group created</string>
+    <string name="goal_created">Goal created</string>
+    <string name="error_cantidad_meta">A quantity is required for this goal.</string>
+    <string name="error_label_grupo">A title is required to create a group.</string>
 </resources>

@@ -103,7 +103,7 @@ public class NewGroupActivity extends AppCompatActivity implements  IconDialog.C
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
             builder.setTitle(v.getContext().getString(R.string.error));
-            builder.setMessage("Es necesario introducir un título");
+            builder.setMessage(R.string.error_label_grupo);
             builder.setIcon(R.drawable.ic_error);
             builder.setPositiveButton(v.getContext().getString(R.string.yes), new DialogInterface.OnClickListener() {
                 @Override
