@@ -114,6 +114,8 @@ public class RegistroActions {
         }
     }
 
+    public void delete(final Registro registro){ new deleteAsyncTask(db, registro).execute(); }
+
     public void update(final Registro registro) throws ExecutionException, InterruptedException {
         final Registro r = getRegistro(registro.getRegistroId());
         if(r != null){

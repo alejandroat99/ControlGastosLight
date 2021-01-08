@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
-    private ArrayList<Registro> list = new ArrayList<>();
+    private ArrayList<Registro> list = null;
     private Context context;
 
     public RegistroListAdapter(ArrayList<Registro> list, Context context){
@@ -86,6 +86,12 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
         buildDeleteButton(position, itemView);
 
         // Build Edit button
+        buildEditButton(itemView, register);
+
+        return itemView;
+    }
+
+    private void buildEditButton(View itemView, Registro register) {
         ImageButton editBtn = itemView.findViewById(R.id.btn_info_registry);
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,8 +111,6 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                 context.startActivity(intent);
             }
         });
-
-        return itemView;
     }
 
     private void buildDeleteButton(int position, View itemView) {
@@ -126,7 +130,7 @@ public class RegistroListAdapter extends BaseAdapter implements ListAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         RegistroActions ra = new RegistroActions(context);
                         try {
-                            ra.delete(r.getRegistroId());
+                            ra.delete(r);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
